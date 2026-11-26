@@ -134,13 +134,13 @@ const STAGES=[
  {name:'中等題',count:5,time:60,rule:'猜題者和被猜者各寫答案 1 分鐘，依題目計分',
   qs:[
    {t:'被猜者的生日、交往紀念日、星座',max:3,note:'答對 1 個 1 分'},
-   {t:'被猜者起床第一件事是什麼？',max:1},
-   {t:'被猜者最常說的口頭禪？',max:1},
-   {t:'被猜者平常最喜歡吃的甜點？',max:1},
+   {t:'被猜者起床第一件事是什麼？',max:2,pts:2},
+   {t:'被猜者最常說的口頭禪？',max:2,pts:2},
+   {t:'被猜者平常最喜歡吃的甜點？',max:2,pts:2},
    {t:'被猜者目前手機最常用的 3 個 App',max:3,note:'答對 1 個 1 分'},
    {t:'寫出 5 樣被猜者包包裡的東西',max:5,note:'答對 1 個 1 分'},
    {t:'寫出被猜者討厭的食物、不能吃的食物',max:5,note:'答對 1 個 1 分'},
-   {t:'如果被猜者明天放假一整天，會想怎麼過？',max:1},
+   {t:'如果被猜者明天放假一整天，會想怎麼過？',max:2,pts:2},
   ]},
  {name:'困難題',count:5,time:120,rule:'各寫答案 2 分鐘，答對得 3 分',
   qs:['被猜者最喜歡、去過的約會地點','被猜者的洗澡順序','被猜者最近想買、但還沒買的東西是什麼？','被猜者最喜歡的卡通人物或玩具是什麼？','被猜者最喜歡看哪一類型的電影或影集？','畫出第一次相遇時被猜者的髮型 ✏️','第一次接吻的地點','被猜者覺得，猜題者為他做過最感動的事是什麼？','第一次告白的地點'].map(t=>({t,max:3}))},
@@ -150,13 +150,15 @@ const CARDS={
  swapP:{name:'換人卡',icon:'🔀',desc:'作答前使用，讓自己或別隊的猜題者與被猜者互換（中等、困難題）',when:'pre',stages:[1,2]},
  plus:{name:'加分卡',icon:'➕',desc:'答對時使用，分數再 +1',when:'post',stages:[0,1,2]},
  double:{name:'雙倍卡',icon:'✨',desc:'作答前使用，這題答對得分 ×2',when:'pre',stages:[0,1,2]},
- intel:{name:'情報卡',icon:'🕵️',desc:'作答前使用，可以問被猜者答案的第一個字（中等、困難題）',when:'pre',stages:[1,2]},
+ intel:{name:'情報卡',icon:'🕵️',desc:'作答前或作答中使用，可以問被猜者答案的第一個字（中等、困難題）',when:'pre',stages:[1,2]},
 };
 const DECK=['swapQ','swapQ','swapP','swapP','plus','plus','double','intel','intel','intel'];
 const TC=['#ff6fa5','#5ec8ff','#ffc74d'];
 const OATH='我宣誓，今晚所有答案都是遊戲，<br>答錯不是不愛，是題目出得太爛。<br>如果因此吵架，罰請全場喝飲料！';
-const CLIENT_ACTS=['pause','resume','useCard','done'];
-const NO_HIST=['pause','resume','undo'];
+const CLIENT_ACTS=['pause','resume','useCard','done','useIntel','setField','swapRoles'];
+const canIntel=i=>S.stage>0&&(S.phase==='pre'||S.phase==='answering')&&S.teams[i].hand.includes('intel');
+const NO_HIST=['pause','resume','undo','setField'];
+const DEF_NAMES=['第一隊','第二隊','第三隊'];
 
 /* ============ 狀態 ============ */
 let role=null, S=null, code=null, myTeam=null, netText='';
@@ -175,8 +177,8 @@ function newState(){return{
 
 const curQ=()=>S.q==null?null:STAGES[S.stage].qs[S.q];
 const poolLeft=()=>STAGES[S.stage].qs.length-S.used[S.stage].length;
-function qNote(){const q=curQ();if(!q)return'';if(S.stage===0)return'答案相同 +1 分';if(S.stage===2)return'答對 +3 分';return q.note?`${q.note}，最多 ${q.max} 分`:'答對 +1 分'}
-function scoreOpts(){if(S.stage===0)return[0,1];if(S.stage===2)return[0,3];return Array.from({length:curQ().max+1},(_,i)=>i)}
+function qNote(){const q=curQ();if(!q)return'';if(S.stage===0)return'答案相同 +1 分';if(S.stage===2)return'答對 +3 分';return q.note?`${q.note}，最多 ${q.max} 分`:`答對 +${q.pts||1} 分`}
+function scoreOpts(){if(S.stage===0)return[0,1];if(S.stage===2)return[0,3];if(curQ().pts)return[0,curQ().pts];return Array.from({length:curQ().max+1},(_,i)=>i)}
 
 function usable(i,kind){
  const t=S.teams[i],out=[];
@@ -227,6 +229,8 @@ function useCard(team,card,target){
 function reduce(a){
  const st=STAGES[S.stage];
  switch(a.type){
+ case'setField':{if(S.phase!=='lobby'||!['name','a','b'].includes(a.field))return false;let v=String(a.value??'').slice(0,12);if(a.field==='name'&&!v.trim())v=DEF_NAMES[a.team];S.teams[a.team][a.field]=v;break}
+ case'swapRoles':{if(S.phase!=='lobby')return false;const t=S.teams[a.team];[t.a,t.b]=[t.b,t.a];break}
  case'start':S.phase='intro';break;
  case'oath':S.phase='oath';break;
  case'deal':S.deck=shuffle(DECK.slice());S.teams.forEach(t=>{t.hand=[S.deck.pop(),S.deck.pop()]});S.phase='deal';break;
@@ -234,6 +238,7 @@ function reduce(a){
  case'draw':drawQuestion();break;
  case'useCard':return useCard(a.team,a.card,a.target);
  case'done':if(!S.win)return false;S.win.done[a.team]=true;if(S.win.kind==='post'&&S.win.done.every(Boolean))applyScores();break;
+ case'useIntel':{if(!canIntel(a.team))return false;const t=S.teams[a.team];t.hand.splice(t.hand.indexOf('intel'),1);event(`🕵️ ${t.name} 使用了「情報卡」，可以問被猜者答案的第一個字！`);if(S.win&&usable(a.team,S.win.kind).length===0)S.win.done[a.team]=true;break}
  case'startAnswer':if(S.phase!=='pre')return false;S.win=null;S.phase='answering';S.timer={dur:st.time*1000,left:st.time*1000,running:true};S.paused=false;lastBeep=null;break;
  case'endAnswer':if(S.phase!=='answering')return false;S.timer.running=false;S.timer.left=0;S.phase='reveal';break;
  case'setBase':if(S.phase!=='reveal')return false;S.teams[a.team].base=a.v;break;
@@ -390,14 +395,14 @@ function teamCardHTML(i){
   <div class="trow"><div class="tname">${esc(t.name)}</div><div class="score">${t.score}</div></div>
   <div class="roles">🎯 猜題 ${esc(t.a||'—')}　💭 被猜 ${esc(t.b||'—')}</div>
   <div>${t.hand.length?t.hand.map(c=>`<span class="chip">${CARDS[c].icon} ${CARDS[c].name}</span>`).join(''):'<span class="muted small">沒有卡片</span>'}</div>
-  ${showX2?'<span class="x2">本題 ×2</span>':''}${status}
+  ${showX2?'<span class="x2">本題 ×2</span>':''}${status}${S.phase==='answering'&&canIntel(i)?`<div class="proxy"><button class="sm" data-act="useIntel" data-team="${i}">🕵️ 用情報卡</button></div>`:''}
  </div>`;
 }
 function targetChooser(i,small){
  return `<div class="targets"><div class="muted small" style="width:100%">要讓哪一隊的猜題者、被猜者互換？</div>${S.teams.map((t,j)=>`<button class="${small?'sm':''}" style="background:${TC[j]};color:#1a0f22" data-act="useCard" data-team="${i}" data-card="swapP" data-target="${j}">${esc(t.name)}${j===i?'（自己）':''}</button>`).join('')}<button class="${small?'sm':''} ghost" data-act="swapCancel">取消</button></div>`;
 }
 function scoringHTML(){
- const opts=scoreOpts(),bin=S.stage!==1;
+ const opts=scoreOpts(),bin=S.stage!==1||!!curQ().pts;
  return `<div class="scoring">${S.teams.map((t,i)=>`<div class="srow" style="--c:${TC[i]}"><div class="sname">${esc(t.name)}${t.double?' <span class="x2">×2</span>':''}</div><div class="sopts">${opts.map(v=>`<button class="opt ${t.base===v?'on':''}" data-act="setBase" data-team="${i}" data-v="${v}">${bin?(v?`答對 +${v}`:'答錯'):`${v} 分`}</button>`).join('')}</div></div>`).join('')}</div>`;
 }
 function gainsHTML(){
@@ -424,8 +429,9 @@ function renderHost(){
  let main='',ctrl='',scores=true;
  switch(S.phase){
  case'lobby':main=`<div class="lobby"><div class="joinbox"><div class="qr">${qrSVG(joinURL())}</div><div><div class="muted">手機掃 QR，或打開網址輸入房號</div><div class="code">${code}</div><div class="muted small">${esc(joinURL())}</div></div></div>
-   <div class="setup">${S.teams.map((t,i)=>`<div class="team" style="--c:${TC[i]}"><label>隊名<input data-field="name" data-i="${i}" value="${esc(t.name)}"></label><label>🎯 猜題者<input data-field="a" data-i="${i}" value="${esc(t.a)}" placeholder="名字"></label><label>💭 被猜者<input data-field="b" data-i="${i}" value="${esc(t.b)}" placeholder="名字"></label></div>`).join('')}</div></div>`;
-  ctrl=btn('隊伍設定好了，開始！','start');scores=false;break;
+   <p class="rule">📱 各隊用手機掃 QR → 選隊伍 → 自己填隊名和名字</p>
+   <div class="setup">${S.teams.map((t,i)=>`<div class="team" style="--c:${TC[i]}"><div class="trow"><div class="tname">${esc(t.name)}</div><div>${t.a&&t.b?'✅':'⏳'}</div></div><div class="roles">🎯 猜題者：${t.a?esc(t.a):'<span class="muted">等待填寫…</span>'}</div><div class="roles">💭 被猜者：${t.b?esc(t.b):'<span class="muted">等待填寫…</span>'}</div></div>`).join('')}</div></div>`;
+  ctrl=btn(S.teams.every(t=>t.a&&t.b)?'大家都填好了，開始！':'不等了，開始！','start');scores=false;break;
  case'intro':main=`<h1 class="title">今晚的參賽隊伍</h1><div class="intro">${S.teams.map((t,i)=>`<div class="icard" style="--c:${TC[i]}"><div class="iname">${esc(t.name)}</div><div>🎯 猜題者：${esc(t.a||'—')}</div><div>💭 被猜者：${esc(t.b||'—')}</div></div>`).join('')}</div><p class="rule muted">每個人拿好筆和白板 ✍️</p>`;
   ctrl=btn('下一步：全場宣誓 ✋','oath');scores=false;break;
  case'oath':main=`<h1 class="title">✋ 全場舉手宣誓</h1><div class="oath">${OATH}</div>`;ctrl=btn('宣誓完畢，發卡！🃏','deal');scores=false;break;
@@ -454,6 +460,7 @@ function cardModal(){
  return `<div class="modal"><div class="sheet"><h2>${pre?'🃏 要使用卡片嗎？':'🎉 答對了！要用加分卡嗎？'}</h2>${pre&&curQ()?`<p class="mq">題目：${esc(curQ().t)}</p>`:''}${body}<button class="ghost big full" data-act="done" data-team="${myTeam}">${pre?'不用了 👌':'不用'}</button></div></div>`;
 }
 function renderClient(){
+ const ae=document.activeElement;if(S&&S.phase==='lobby'&&ae&&ae.dataset&&ae.dataset.tf){updateNet();return}
  if(!S){app.innerHTML=`<div class="center"><div style="font-size:4em">💞</div><p id="net">${netBadge()}</p></div>`;return}
  if(myTeam===null){
   app.innerHTML=`<div class="client"><header class="cbar"><b>選擇隊伍</b><span id="net" class="small">${netBadge()}</span></header><h2 style="text-align:center">你是哪一隊？</h2>${S.teams.map((t,i)=>`<button class="pick" style="--c:${TC[i]}" data-act="pickTeam" data-team="${i}"><b>${esc(t.name)}</b><span>${esc([t.a,t.b].filter(Boolean).join('、')||'（主持人還沒填名字）')}</span></button>`).join('')}</div>${pauseOverlay()}`;
@@ -461,13 +468,18 @@ function renderClient(){
  }
  const t=S.teams[myTeam],st=STAGES[S.stage],q=curQ();let mid='';
  switch(S.phase){
- case'lobby':mid='<p class="muted">等待主持人設定隊伍…</p>';break;
+ case'lobby':mid=`<h3 style="margin:0">✏️ 設定你們這隊</h3><div style="width:100%">
+  <label>隊名<input data-tf="name" value="${esc(t.name)}" maxlength="12"></label>
+  <label>🎯 猜題者（負責猜的人）<input data-tf="a" value="${esc(t.a)}" placeholder="名字" maxlength="12"></label>
+  <label>💭 被猜者（被猜的人）<input data-tf="b" value="${esc(t.b)}" placeholder="名字" maxlength="12"></label>
+  <button class="ghost sm" data-act="swapRoles" data-team="${myTeam}">⇄ 對調猜題者／被猜者</button></div>
+  <p class="muted small">同隊任何一支手機都能改；主持人按開始後就鎖定</p>`;break;
  case'intro':mid='<p>介紹隊伍中，準備好筆和白板 ✍️</p>';break;
  case'oath':mid=`<div class="oath sm">${OATH}</div>`;break;
  case'deal':mid='<p>🃏 你們抽到的卡片在下面！</p>';break;
  case'stageIntro':mid=`<div class="badge">${st.name}</div><p>${st.rule}</p>`;break;
  case'pre':case'answering':case'reveal':case'post':
-  mid=`<div class="badge">${st.name} · 第 ${S.qNum+1}/${st.count} 題</div><div class="cqtext">${esc(q.t)}</div><div class="note">${qNote()}</div>${S.phase==='answering'?'<div class="timer"></div>':''}<div class="phase">${{pre:'🃏 卡片時間',answering:'✍️ 作答中！',reveal:'📝 公布答案，等待計分…',post:'➕ 加分卡時間'}[S.phase]}</div>${t.double?'<span class="x2">本題 ×2</span>':''}`;break;
+  mid=`<div class="badge">${st.name} · 第 ${S.qNum+1}/${st.count} 題</div><div class="cqtext">${esc(q.t)}</div><div class="note">${qNote()}</div>${S.phase==='answering'?'<div class="timer"></div>':''}<div class="phase">${{pre:'🃏 卡片時間',answering:'✍️ 作答中！'+(canIntel(myTeam)?'<br><button data-act="useIntel" data-team="'+myTeam+'" style="margin-top:8px">🕵️ 使用情報卡</button>':''),reveal:'📝 公布答案，等待計分…',post:'➕ 加分卡時間'}[S.phase]}</div>${t.double?'<span class="x2">本題 ×2</span>':''}`;break;
  case'result':mid=`<p>本題你們隊</p><div class="gv" style="--c:${TC[myTeam]}">+${t.gained||0}</div>`;break;
  case'stageEnd':mid=`<p>${st.name}結束！</p>${(S.draws||[]).filter(d=>d.team===myTeam).map(d=>`<p>你們分數最低，補抽到：<b>${d.card?CARDS[d.card].icon+' '+CARDS[d.card].name:'（牌庫沒卡了）'}</b></p>`).join('')}`;break;
  case'final':mid=finalHTML();break;
@@ -477,7 +489,7 @@ function renderClient(){
   <section class="panel center-t">${mid}</section>
   <button class="pausebig" data-act="pause">⏸ 暫停</button>
   <section class="panel"><div class="roles">🎯 猜題者 <b>${esc(t.a||'—')}</b>　💭 被猜者 <b>${esc(t.b||'—')}</b></div></section>
-  <section class="panel"><h3>我們的卡片（${t.hand.length}）</h3>${t.hand.length?t.hand.map(c=>`<div class="crow"><span class="cicon">${CARDS[c].icon}</span><div><b>${CARDS[c].name}</b><div class="muted small">${CARDS[c].desc}</div></div></div>`).join(''):'<p class="muted">沒有卡片</p>'}<p class="muted small">可以用卡的時候會自動跳出來問你</p></section>
+  <section class="panel"><h3>我們的卡片（${t.hand.length}）</h3>${t.hand.length?t.hand.map((c,k)=>`<div class="crow"><span class="cicon">${CARDS[c].icon}</span><div style="flex:1"><b>${CARDS[c].name}</b><div class="muted small">${CARDS[c].desc}</div></div>${c==='intel'&&S.phase==='answering'&&canIntel(myTeam)&&t.hand.indexOf('intel')===k?`<button data-act="useIntel" data-team="${myTeam}">使用</button>`:''}</div>`).join(''):'<p class="muted">沒有卡片</p>'}<p class="muted small">可以用卡的時候會自動跳出來問你</p></section>
   <section class="panel"><h3>比分</h3>${S.teams.map((x,i)=>`<div class="mini" style="--c:${TC[i]}"><span>${esc(x.name)}</span><b>${x.score}</b></div>`).join('')}</section>
  </div>${cardModal()}${pauseOverlay()}`;
 }
@@ -513,10 +525,11 @@ document.addEventListener('click',e=>{
  if(handleLocal(a))return;
  dispatch(a);
 });
-document.addEventListener('input',e=>{
- const el=e.target;
- if(role==='host'&&el.dataset.field){S.teams[+el.dataset.i][el.dataset.field]=el.value;save();debouncedBroadcast()}
-});
+let tfT;
+function sendTF(el){clearTimeout(tfT);if(myTeam===null||!S)return;S.teams[myTeam][el.dataset.tf]=el.value;dispatch({type:'setField',team:myTeam,field:el.dataset.tf,value:el.value})}
+document.addEventListener('input',e=>{const el=e.target;if(role==='client'&&el.dataset.tf){clearTimeout(tfT);tfT=setTimeout(()=>sendTF(el),400)}});
+document.addEventListener('change',e=>{const el=e.target;if(role==='client'&&el.dataset.tf)sendTF(el)});
+document.addEventListener('focusout',e=>{if(role==='client'&&e.target.dataset&&e.target.dataset.tf)setTimeout(render,60)});
 document.addEventListener('keydown',e=>{if(e.target.id==='joinCode'&&e.key==='Enter')handleLocal({type:'join'})});
 
 const jp=new URLSearchParams(location.search).get('join');
