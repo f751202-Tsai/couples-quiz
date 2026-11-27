@@ -189,6 +189,38 @@ button.atile.next{border-style:solid;box-shadow:0 0 18px rgba(255,199,77,.6)}
 .race-head{width:min(96vw,calc(84vh*360/290));display:flex;justify-content:space-between;align-items:center;color:#fff5f9;font-weight:900;font-size:clamp(16px,2.4vw,28px)}
 .race-head span{color:#ffd36b;font-size:.8em}
 .race-skip{position:absolute;top:12px;right:12px}
+.mimebox,.whisper,.mindbox{position:relative;width:min(76vw,440px);height:min(34vh,260px);display:flex;align-items:center;justify-content:center}
+.mfig{position:relative;display:inline-block;font-size:min(30vw,22vh);line-height:1}
+.mh{position:absolute;font-size:.42em;top:18%}
+.mh.l{left:-38%;animation:handL .45s ease-in-out infinite alternate}.mh.r{right:-38%;animation:handR .45s ease-in-out infinite alternate}
+@keyframes handL{from{transform:translateY(-35%) rotate(-35deg)}to{transform:translateY(45%) rotate(25deg)}}
+@keyframes handR{from{transform:translateY(45%) rotate(35deg)}to{transform:translateY(-35%) rotate(-25deg)}}
+.whisper .wa,.whisper .wb{position:absolute;top:18%;font-size:min(24vw,17vh);line-height:1}
+.wa{left:4%;animation:leanR .9s ease-in-out infinite alternate}.wb{right:4%;animation:leanL .9s ease-in-out infinite alternate}
+@keyframes leanR{to{transform:translateX(22%) rotate(10deg)}}@keyframes leanL{to{transform:translateX(-22%) rotate(-10deg)}}
+.bub{position:absolute;left:45%;top:40%;font-size:min(9vw,7vh);opacity:0;animation:bub 1.2s ease-out infinite}
+.bub.b2{left:52%;animation-delay:.4s}.bub.b3{left:48%;animation-delay:.8s}
+@keyframes bub{0%{transform:translateY(40px) scale(.5);opacity:0}30%{opacity:1}100%{transform:translateY(-90px) scale(1.1);opacity:0}}
+.kingbox{position:relative;width:min(86vw,620px);display:flex;flex-direction:column;align-items:center;gap:2vh}
+.kking{font-size:min(20vw,14vh);line-height:1;animation:kbob .5s ease-in-out infinite alternate}
+@keyframes kbob{to{transform:translateY(-8%) rotate(-6deg)}}
+.kcard{position:relative;width:100%;background:#fff8ee;color:#2a1033;border-radius:18px;padding:22px 18px;font-weight:900;font-size:clamp(18px,3.4vw,38px);min-height:130px;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center}
+.kold{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:18px;background:#fff8ee;clip-path:inset(0 0 0 0);animation:wipe 1.3s ease-in-out .5s forwards;color:#7a6a5a}
+@keyframes wipe{to{clip-path:inset(0 0 0 100%)}}
+.knew{opacity:0;animation:kin .5s ease-out 1.8s forwards}@keyframes kin{to{opacity:1}}
+.mop{position:absolute;bottom:0;left:-14%;font-size:min(16vw,12vh);z-index:3;animation:mop 1.3s ease-in-out .5s forwards}
+.mop i{display:inline-block;font-style:normal;animation:scrub .18s ease-in-out infinite alternate}
+@keyframes mop{to{left:100%}}@keyframes scrub{from{transform:rotate(-18deg)}to{transform:rotate(14deg)}}
+.nullcard{width:min(50vw,32vh);animation:nullgrow 5s ease-in-out forwards}
+.nullcard .pcard{flex:none;max-width:none;width:100%;transform:none}
+@keyframes nullgrow{0%{transform:scale(.3);opacity:0;filter:brightness(1)}20%{opacity:1}55%{transform:scale(1.25);filter:brightness(1.5) drop-shadow(0 0 40px #fff)}80%{transform:scale(1.6);filter:brightness(3) drop-shadow(0 0 120px #fff)}100%{transform:scale(1.8);opacity:0;filter:brightness(4) drop-shadow(0 0 200px #fff)}}
+.flash{position:fixed;inset:0;background:#fff;opacity:0;animation:flash 5s ease-in-out forwards;pointer-events:none}
+@keyframes flash{0%,55%{opacity:0}78%{opacity:.85}100%{opacity:0}}
+.mfig .mshadow{position:absolute;left:0;top:0;filter:brightness(0) blur(3px);opacity:0;animation:mshadow 5s ease-in-out forwards}
+.mfig .mself{position:relative;z-index:2}
+.mfig .glow{position:absolute;left:50%;top:42%;width:.12em;height:.12em;margin:-.06em 0 0 -.06em;border-radius:50%;background:#fff;z-index:3;box-shadow:0 0 30px 15px #fff,0 0 90px 45px #d97bff;animation:mglow 5s ease-in-out forwards}
+@keyframes mshadow{0%,35%{opacity:0;transform:translateX(0)}55%{opacity:.75;transform:translateX(26%)}75%{opacity:.55;transform:translateX(-14%)}100%{opacity:0;transform:translateX(0)}}
+@keyframes mglow{0%{transform:scale(.2);opacity:0}25%{transform:scale(1.4);opacity:1}45%{transform:scale(2.6)}70%{transform:scale(1);opacity:.7}100%{opacity:0}}
 .pause-ov{position:fixed;inset:0;background:rgba(10,4,16,.88);z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
 .pause-ov .pi{font-size:5em}.pause-ov h1{margin:0;font-size:2.4em}
 #toast{position:fixed;left:50%;top:18px;transform:translate(-50%,-150%);background:#ffc74d;color:#2a1600;font-weight:900;padding:12px 22px;border-radius:16px;z-index:80;transition:transform .3s;max-width:92vw;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.4)}
@@ -248,7 +280,9 @@ button.atile.next{border-style:solid;box-shadow:0 0 18px rgba(255,199,77,.6)}
 <script>
 /* ============ 語言 ============ */
 const I18N={
-zh:{title:'默契大挑戰',namePrompt:'先輸入你的名字',namePh:'你的名字',nameNext:'下一步 ▶',hiName:'嗨，{n}',editName:'改名字',pickSlot:'選擇隊伍和位置',slotEmpty:'空位',leaveSlot:'離開位置',
+zh:{title:'默契大挑戰',ev_discuss:'，猜題者可以跟別隊討論答案！',ev_yesno:'，可以問被猜者一次「是不是這個答案？」（只能點頭或搖頭）',ev_king:'，把題目換成他們出的題目！',ev_nullify:'，本題所有人得分無效！',ev_mind:'，被猜者寫完後要和猜題者交換角色！',
+ kingQ:'輸入你們出的題目',kingHint:'計分方式照原本這題：{note}',kingPh:'例如：被猜者最怕什麼動物？',kingGo:'👑 確定出題',kingEmpty:'請先輸入題目',kingBy:'這題是 {t} 出的題目',nullHint:'🎴 {t} 翻開覆蓋的卡：本題所有人得分無效',
+ an_mime:'🙌 比手劃腳！',an_mimeSub:'{t} 的被猜者用比手畫腳提示（不能說話、不能比數字）',an_discuss:'💬 討論時間！',an_discussSub:'{t} 的猜題者可以跟別隊討論答案',an_king:'👑 國王的新卡！',an_kingSub:'{t} 出了新題目',an_nullify:'🎴 翻開覆蓋的卡！',an_nullifySub:'本題所有人得分無效',an_mind:'🔮 心靈交換！',an_mindSub:'{t} 的被猜者寫完後，和猜題者交換角色',namePrompt:'先輸入你的名字',namePh:'你的名字',nameNext:'下一步 ▶',hiName:'嗨，{n}',editName:'改名字',pickSlot:'選擇隊伍和位置',slotEmpty:'空位',leaveSlot:'離開位置',
  started:'遊戲已經開始了，不能再換隊',reclaimHint:'換了手機或重新整理的話，選回你自己：',reclaimBtn:'我是 {n}',youAre:'你是',
  ansLabel:'✍️ 用手機輸入答案（可不填，主要還是寫在白板上）',ansPh:'在這裡輸入答案…',ansSend:'送出答案',ansSent:'✅ 主持人已收到',myAns:'你的答案',zoomBtn:'🔍 放大給大家看',zoomClose:'點一下關閉',
  ansTitle:'📱 手機作答',revealNext:'揭曉下一個 ▶',tapReveal:'👆 點一下揭曉',noAns:'（沒有用手機作答）',ansOrder:'猜題者先說明為什麼這樣寫，再由被猜者公布答案',
@@ -261,7 +295,7 @@ zh:{title:'默契大挑戰',namePrompt:'先輸入你的名字',namePh:'你的名
  cfgTitle:'⚙️ 遊戲設定',cfgTeams:'隊伍數',cfgMode:'玩法',modeCouple:'💑 情侶',modeFriend:'🍻 朋友',cfgCount:'出 {n} 題',cfgAvail:'（已勾 {m} 題）',cfgAll:'全選／全不選',cfgCustomPh:'自訂題目…',cfgAdd:'＋ 新增',customTag:'自訂',
  typePts:'答對得 {v} 分',typeEach:'答對 1 個 1 分（最多 3 分）',cfgDone:'設定完成，開始邀請玩家 ▶',cfgNeedOne:'至少要有一個階段勾選而且有題目',backCfg:'⚙️ 回到設定',cfgWait:'主持人正在設定遊戲…',cfgCards:'🃏 卡牌設定',cfgDealL:'開局每隊抽',cfgRefill:'{s}結束後：',refillAll:'每隊抽',refillLow:'最低分加抽',deckTotal:'牌庫共 {n} 張',deckShort:'⚠️ 牌庫 {n} 張，不夠開局發 {m} 張',warnSwap:'⚠️ 換題卡有 {k} 張，但這階段已勾 {m} 題、要出 {n} 題，剩下的題目不夠換。請多勾題目，或用下面的按鈕調整：',fixCount:'出題數改成 {v} 題',fixSwap:'換題卡改成 {v} 張',cfgFixFirst:'請先處理設定裡的 ⚠️ 提醒',oathGo:'宣誓完畢，開始！▶',cfgEmpty:'請先輸入題目',
  lobbyHint:'📱 每個人用手機掃 QR → 輸入名字 → 選隊伍和位置',waitingFill:'等待填寫…',scanHint:'手機掃 QR，或打開網址輸入房號',startAll:'大家都填好了，開始！',startAnyway:'不等了，開始！',
- teamsTonight:'今晚的參賽隊伍',penBoard:'每個人拿好筆和白板 ✍️',toOath:'下一步：全場宣誓 ✋',oathTitle:'✋ 全場舉手宣誓',dealBtn:'宣誓完畢，發卡！🃏',dealTitle:'🃏 每隊抽到 2 張卡',dealHint:'卡片只有自己隊伍的手機看得到；可以用卡的時候，手機會自動跳出來問',
+ teamsTonight:'今晚的參賽隊伍',penBoard:'每個人拿好筆和白板 ✍️',toOath:'下一步：全場宣誓 ✋',oathTitle:'✋ 全場舉手宣誓',dealBtn:'宣誓完畢，發卡！🃏',dealTitle:'🃏 每隊抽到 {n} 張卡',dealHint:'卡片只有自己隊伍的手機看得到；可以用卡的時候，手機會自動跳出來問',
  startStage:'開始{s} ▶',drawFirst:'抽第 1 題 🎲',allDecided:'✅ 各隊都決定好了',allNoCard:'✅ 各隊都決定不使用卡片',cardTime:'🃏 卡片時間：各隊在手機上決定要不要用卡…',startTimer:'開始倒數 {n} 秒 ⏱',startTimerSkip:'不等了，開始倒數 {n} 秒 ⏱',endEarly:'提早結束',
  pointNow:'👉 兩人同時指出答案！',revealT:'📝 公布答案！',confirm:'確認得分 ✓',plusTime:'➕ 加分卡時間',plusHint:'答對、而且有加分卡的隊伍，在手機上決定要不要用',applyNow:'不等了，直接結算',gainTitle:'本題得分',
  next:'下一題 ▶',stageDone:'本階段結束 🏁',stageOver:'{s}結束！',drawAll:'🃏 每隊各抽 {n} 張卡',drawLow:'📉 {t} 分數最低，加抽 {n} 張',youDrew:'你們抽到：',deckEmpty:'（牌庫沒卡了）',gotoStage:'進入{s} ▶',again:'再玩一次',
@@ -280,7 +314,9 @@ zh:{title:'默契大挑戰',namePrompt:'先輸入你的名字',namePh:'你的名
  ev_mime:'，被猜者可以比手畫腳提示（不能說話、不能比數字）！',ev_friend:'，要額外猜 {o} 的答案！',ev_troll:'，這題由他們幫 {o} 作答！',ev_undo:'↩ 已復原上一步',
  noteEasy:'答案相同 +1 分',noteRight:'答對 +{v} 分',noteEach:'答對 1 個 1 分，最多 {m} 分',noteMulti:'可寫多個答案，對一個就得 3 分',
  oath:'我宣誓，<br>今晚所有答案都是遊戲，<br>答錯不是不愛，<br>是題目出得太爛。<br>如果因此吵架，<br>罰請全場喝飲料！'},
-fr:{title:"Le Grand Défi",namePrompt:"Entre d'abord ton prénom",namePh:"Ton prénom",nameNext:"Suivant ▶",hiName:"Salut {n}",editName:"Changer de prénom",pickSlot:"Choisis ton équipe et ta place",slotEmpty:"libre",leaveSlot:"Quitter la place",
+fr:{title:"Le Grand Défi",ev_discuss:" : le devineur peut discuter avec une autre équipe !",ev_yesno:" : une question « c'est bien ça ? » à la personne devinée (oui ou non de la tête)",ev_king:" : la question est remplacée par la leur !",ev_nullify:" : tous les points de cette question sont annulés !",ev_mind:" : après avoir écrit, la personne devinée échange son rôle avec le devineur !",
+ kingQ:"Écrivez votre question",kingHint:"Même barème que la question d'origine : {note}",kingPh:"Ex. : de quel animal la personne devinée a-t-elle le plus peur ?",kingGo:"👑 Valider la question",kingEmpty:"Écris d'abord la question",kingBy:"Question posée par {t}",nullHint:"🎴 {t} retourne sa carte : tous les points de cette question sont annulés",
+ an_mime:"🙌 Mime !",an_mimeSub:"La personne devinée de {t} mime (sans parler ni chiffres)",an_discuss:"💬 Discussion !",an_discussSub:"Le devineur de {t} peut discuter avec une autre équipe",an_king:"👑 Nouvelle carte du roi !",an_kingSub:"{t} a posé une nouvelle question",an_nullify:"🎴 Carte retournée !",an_nullifySub:"Tous les points de cette question sont annulés",an_mind:"🔮 Échange d'esprit !",an_mindSub:"Après avoir écrit, la personne devinée de {t} échange son rôle avec le devineur",namePrompt:"Entre d'abord ton prénom",namePh:"Ton prénom",nameNext:"Suivant ▶",hiName:"Salut {n}",editName:"Changer de prénom",pickSlot:"Choisis ton équipe et ta place",slotEmpty:"libre",leaveSlot:"Quitter la place",
  started:"La partie a commencé, on ne change plus d'équipe",reclaimHint:"Si tu as changé de téléphone ou rechargé la page, choisis-toi :",reclaimBtn:"Je suis {n}",youAre:"Tu es",
  ansLabel:"✍️ Ta réponse sur le téléphone (facultatif, l'ardoise reste la règle)",ansPh:"Écris ta réponse…",ansSend:"Envoyer",ansSent:"✅ Reçu par l'animateur",myAns:"Ta réponse",zoomBtn:"🔍 Agrandir pour montrer",zoomClose:"Touchez pour fermer",
  ansTitle:"📱 Réponses sur téléphone",revealNext:"Révéler la suivante ▶",tapReveal:"👆 Touchez pour révéler",noAns:"(pas de réponse sur téléphone)",ansOrder:"Le devineur explique sa réponse, puis la personne devinée révèle la sienne",
@@ -293,7 +329,7 @@ fr:{title:"Le Grand Défi",namePrompt:"Entre d'abord ton prénom",namePh:"Ton pr
  cfgTitle:"⚙️ Réglages",cfgTeams:"Équipes",cfgMode:"Mode",modeCouple:"💑 Couples",modeFriend:"🍻 Amis",cfgCount:"{n} questions",cfgAvail:" (sur {m} cochées)",cfgAll:"Tout / rien",cfgCustomPh:"Question personnalisée…",cfgAdd:"＋ Ajouter",customTag:"perso",
  typePts:"Juste : {v} pts",typeEach:"1 pt par réponse juste (max 3)",cfgDone:"Terminé, inviter les joueurs ▶",cfgNeedOne:"Il faut au moins une manche cochée avec des questions",backCfg:"⚙️ Réglages",cfgWait:"L'animateur prépare la partie…",cfgCards:"🃏 Cartes",cfgDealL:"Cartes de départ par équipe",cfgRefill:"Après « {s} » :",refillAll:"chaque équipe pioche",refillLow:"la dernière pioche en plus",deckTotal:"{n} cartes au total",deckShort:"⚠️ {n} cartes : pas assez pour en distribuer {m}",warnSwap:"⚠️ {k} carte(s) Changement, mais {m} questions cochées pour {n} posées : pas assez de questions de réserve. Cochez-en plus ou ajustez :",fixCount:"Poser {v} questions",fixSwap:"Mettre {v} carte(s) Changement",cfgFixFirst:"Corrigez d'abord les ⚠️ dans les réglages",oathGo:"Serment prêté, on commence ! ▶",cfgEmpty:"Écris d'abord la question",
  lobbyHint:"📱 Chacun scanne le QR → entre son prénom → choisit son équipe et sa place",waitingFill:"En attente…",scanHint:"Scannez le QR ou ouvrez le site et entrez le numéro",startAll:"Tout le monde est prêt, on commence !",startAnyway:"On commence quand même !",
- teamsTonight:"Les équipes de ce soir",penBoard:"Chacun prend un stylo et une ardoise ✍️",toOath:"Suite : le serment ✋",oathTitle:"✋ Levez la main et jurez",dealBtn:"Serment prêté, on distribue ! 🃏",dealTitle:"🃏 Chaque équipe reçoit 2 cartes",dealHint:"Seul le téléphone de votre équipe voit vos cartes ; il vous les proposera au bon moment",
+ teamsTonight:"Les équipes de ce soir",penBoard:"Chacun prend un stylo et une ardoise ✍️",toOath:"Suite : le serment ✋",oathTitle:"✋ Levez la main et jurez",dealBtn:"Serment prêté, on distribue ! 🃏",dealTitle:"🃏 Chaque équipe reçoit {n} cartes",dealHint:"Seul le téléphone de votre équipe voit vos cartes ; il vous les proposera au bon moment",
  startStage:"Commencer : {s} ▶",drawFirst:"Tirer la 1re question 🎲",allDecided:"✅ Toutes les équipes sont prêtes",allNoCard:"✅ Aucune équipe n'utilise de carte",cardTime:"🃏 Moment des cartes : chaque équipe décide sur son téléphone…",startTimer:"Lancer le chrono : {n} s ⏱",startTimerSkip:"Sans attendre : chrono {n} s ⏱",endEarly:"Terminer",
  pointNow:"👉 Pointez la réponse en même temps !",revealT:"📝 Montrez vos réponses !",confirm:"Valider les points ✓",plusTime:"➕ Moment des bonus",plusHint:"Les équipes qui ont juste et ont une carte Bonus décident sur leur téléphone",applyNow:"Sans attendre, on compte",gainTitle:"Points de cette question",
  next:"Question suivante ▶",stageDone:"Fin de la manche 🏁",stageOver:"Manche « {s} » terminée !",drawAll:"🃏 Chaque équipe pioche {n} carte(s)",drawLow:"📉 {t} est dernière : {n} carte(s) en plus",youDrew:"Vous avez pioché :",deckEmpty:"(plus de cartes)",gotoStage:"Passer à : {s} ▶",again:"Rejouer",
@@ -344,16 +380,21 @@ const STAGE_COL=[['#2ee59d','#0b9e63'],['#ffd34d','#e09a00'],['#d97bff','#8a2be2
 // when: pre=作答前彈窗, preAns=作答前或作答中, post=答對後；target: any=可選自己, other=只能選別隊
 const CARDS={
  swapQ:{icon:'🔄',n:2,when:'pre',stages:[0,1,2],zh:{n:'換題卡',d:'作答前使用，更換這一題（全場一起換）'},fr:{n:'Changement',d:"Avant de répondre : change la question (pour tout le monde)"}},
- swapP:{icon:'🔀',n:2,when:'pre',stages:[1,2],target:'any',zh:{n:'換人卡',d:'作答前使用，讓自己或別隊的猜題者與被猜者互換（普通、困難題）'},fr:{n:'Échange',d:"Avant de répondre : inverse devineur et deviné(e) de ton équipe ou d'une autre (Moyen, Difficile)"}},
+ swapP:{icon:'🔀',n:4,when:'pre',stages:[1,2],target:'any',zh:{n:'換人卡',d:'作答前使用，讓自己或別隊的猜題者與被猜者互換（普通、困難題）'},fr:{n:'Échange',d:"Avant de répondre : inverse devineur et deviné(e) de ton équipe ou d'une autre (Moyen, Difficile)"}},
  plus:{icon:'➕',n:2,when:'post',stages:[0,1,2],zh:{n:'加分卡',d:'答對時使用，分數再 +1'},fr:{n:'Bonus',d:"Après une bonne réponse : +1 point"}},
  double:{icon:'✨',n:1,when:'pre',stages:[0,1,2],zh:{n:'雙倍卡',d:'作答前使用，這題答對得分 ×2（每題每隊限用 1 張）'},fr:{n:'Double',d:"Avant de répondre : points ×2 sur cette question (1 par question et par équipe)"}},
- intel:{icon:'🕵️',n:2,when:'preAns',stages:[1,2],zh:{n:'情報卡',d:'作答前或作答中使用，可以問被猜者答案的第一個字（普通、困難題，每題每隊限 1 張）'},fr:{n:'Indice',d:"Avant ou pendant la réponse : demande la première lettre de la réponse à la personne devinée (Moyen, Difficile ; 1 par question et par équipe)"}},
- mime:{icon:'🙌',n:2,when:'preAns',stages:[1,2],zh:{n:'比手劃腳卡',d:'作答前或作答中使用，被猜者可以比手畫腳提示猜題者，不能說話、不能比數字（普通、困難題，每題每隊限 1 張）'},fr:{n:'Mime',d:"Avant ou pendant la réponse : la personne devinée peut mimer des indices, sans parler ni montrer de chiffres (Moyen, Difficile ; 1 par question et par équipe)"}},
+ intel:{icon:'🕵️',n:1,when:'preAns',stages:[1,2],zh:{n:'情報卡',d:'作答前或作答中使用，可以問被猜者答案的第一個字（普通、困難題，每題每隊限 1 張）'},fr:{n:'Indice',d:"Avant ou pendant la réponse : demande la première lettre de la réponse à la personne devinée (Moyen, Difficile ; 1 par question et par équipe)"}},
+ mime:{icon:'🙌',n:1,when:'preAns',stages:[1,2],zh:{n:'比手劃腳卡',d:'作答前或作答中使用，被猜者可以比手畫腳提示猜題者，不能說話、不能比數字（普通、困難題，每題每隊限 1 張）'},fr:{n:'Mime',d:"Avant ou pendant la réponse : la personne devinée peut mimer des indices, sans parler ni montrer de chiffres (Moyen, Difficile ; 1 par question et par équipe)"}},
+ discuss:{icon:'💬',n:1,when:'preAns',stages:[1,2],zh:{n:'討論卡',d:'作答前或作答中使用，猜題者可以跟別隊討論被猜者會寫什麼答案（普通、困難題，每題每隊限 1 張）'},fr:{n:'Discussion',d:"Avant ou pendant la réponse : le devineur peut discuter avec une autre équipe de ce que la personne devinée va écrire (Moyen, Difficile ; 1 par question et par équipe)"}},
+ yesno:{icon:'🙆',n:1,when:'preAns',stages:[1,2],zh:{n:'對答卡',d:'作答前或作答中使用，可以問被猜者一次「是不是這個答案？」，被猜者只能點頭或搖頭（普通、困難題，每題每隊限 1 張）'},fr:{n:'Oui ou non',d:"Avant ou pendant la réponse : demande une fois à la personne devinée « c'est bien ça ? » ; elle ne peut que hocher ou secouer la tête (Moyen, Difficile ; 1 par question et par équipe)"}},
+ king:{icon:'👑',n:1,when:'pre',stages:[0,1,2],zh:{n:'國王的新卡',d:'作答前使用，用手機輸入你們出的題目，直接取代這一題；計分方式照原本題目，之後不能再被換題卡換掉'},fr:{n:'Nouvelle carte du roi',d:"Avant de répondre : écrivez votre propre question sur le téléphone, elle remplace celle-ci ; même barème que la question d'origine, et la carte Changement ne peut plus la changer"}},
+ nullify:{icon:'🎴',n:1,when:'post',stages:[0,1,2],zh:{n:'翻開覆蓋的卡',d:'自己答錯時才能使用，這一題所有隊伍得分都變 0，加分卡、雙倍卡也一起無效'},fr:{n:'Carte retournée',d:"Seulement si votre équipe s'est trompée : tous les points de cette question sont annulés pour tout le monde, Bonus et Double compris"}},
+ mind:{icon:'🔮',n:1,when:'ans',stages:[1,2],zh:{n:'心靈交換卡',d:'作答中使用，被猜者寫完答案後，和自己隊的猜題者交換角色（普通、困難題）'},fr:{n:"Échange d'esprit",d:"Pendant la réponse : une fois que la personne devinée a écrit, elle échange son rôle avec le devineur de son équipe (Moyen, Difficile)"}},
  friend:{icon:'🤝',n:1,when:'pre',stages:[0,1,2],target:'other',zh:{n:'好友卡',d:'作答前使用，額外猜一隊的答案，猜對照該題計分給你們'},fr:{n:'Ami',d:"Avant de répondre : devinez aussi la réponse d'une autre équipe ; si c'est juste, vous marquez selon la question"}},
 };
-const CARD_COL={swapQ:'#1f8f8a',swapP:'#2f7fb3',plus:'#2f9a5c',double:'#b8860b',intel:'#7a4fc4',mime:'#c8641c',friend:'#c2477a'};
+const CARD_COL={swapQ:'#1f8f8a',swapP:'#2f7fb3',plus:'#2f9a5c',double:'#b8860b',intel:'#7a4fc4',mime:'#c8641c',discuss:'#138a9c',yesno:'#c9433a',king:'#a0522d',nullify:'#2f3a8c',mind:'#8e3fae',friend:'#c2477a'};
 const buildDeck=(def)=>Object.keys(CARDS).flatMap(c=>Array(Math.max(0,(def||{})[c]|0)).fill(c));
-const defaultCardCfg=()=>({on:true,n:Object.fromEntries(Object.keys(CARDS).map(c=>[c,CARDS[c].n])),deal:2,refill:[{all:0,low:1},{all:1,low:1}]});
+const defaultCardCfg=()=>({on:true,n:Object.fromEntries(Object.keys(CARDS).map(c=>[c,CARDS[c].n])),deal:3,refill:[{all:0,low:1},{all:1,low:1}]});
 const TC=['#ff6fa5','#5ec8ff','#ffc74d','#7dffb0'];
 const CLIENT_ACTS=['pause','resume','useCard','useAns','done','setField','swapRoles','joinSlot','leaveSlot','rename','reclaim','answer'];
 const TEAM_ACTS=['useCard','useAns','done','setField','swapRoles'];
@@ -382,18 +423,18 @@ function refreshMe(){if(role!=='client'||!S)return;if(specMode){me='spec';return
 const mySlot=()=>{const s=slotOf(myPid);return s?s.slot:null};
 const ansOrder=()=>S.teams.flatMap(t=>[t.pa,t.pb]).filter(Boolean);
 
-const perQ=t=>Object.assign(t,{base:0,bonus:0,double:false,intelUsed:false,mimeUsed:false,friend:null,friendBase:0,trolledBy:null,gained:null});
+const perQ=t=>Object.assign(t,{base:0,bonus:0,double:false,intelUsed:false,mimeUsed:false,discussUsed:false,yesnoUsed:false,mindUsed:false,friend:null,friendBase:0,trolledBy:null,gained:null});
 const mkTeam=()=>perQ({name:'',a:'',b:'',pa:null,pb:null,score:0,hand:[]});
 const defaultCfg=()=>({cards:defaultCardCfg(),teams:3,mode:'couple',st:[0,1,2].map(s=>({on:true,count:STAGE_INFO[s].count,sel:BANKS.couple[s].map(()=>true),custom:[]}))});
 function newState(){return{
- phase:'config',cfg:defaultCfg(),cardsOn:true,deckDef:null,dealN:2,refill:[{all:0,low:1},{all:1,low:1}],teams:[mkTeam(),mkTeam(),mkTeam()],deck:[],pool:[[],[],[]],order:[],si:0,counts:[6,5,5],
+ phase:'config',cfg:defaultCfg(),cardsOn:true,deckDef:null,dealN:3,refill:[{all:0,low:1},{all:1,low:1}],teams:[mkTeam(),mkTeam(),mkTeam()],deck:[],pool:[[],[],[]],order:[],si:0,counts:[6,5,5],
  stage:0,qNum:0,used:[[],[],[]],q:null,win:null,timer:{dur:0,left:0,running:false},paused:false,event:null,anim:null,draws:null,
  players:[],answers:{},revealed:[],ansFrom:[],qCards:[],hist:[]}}
 
 const tn=i=>S.teams[i].name||L('team'+i);
 const cnt=(i,c)=>S.teams[i].hand.filter(x=>x===c).length;
 const cntTag=(i,c)=>cnt(i,c)>1?` ×${cnt(i,c)}`:'';
-const curQ=()=>S.q==null?null:(S.pool[S.stage]||[])[S.q]||null;
+const curQ=()=>{if(S.q==null)return null;const q=(S.pool[S.stage]||[])[S.q];if(!q)return null;return S.qOv?{...q,zh:S.qOv.zh,fr:S.qOv.fr}:q};
 const poolLeft=()=>(S.pool[S.stage]||[]).length-S.used[S.stage].length;
 function qNote(q=curQ()){if(!q)return'';if(S.stage===0)return L('noteEasy');if(q.each)return L('noteEach',{m:q.max});if(q.multi)return L('noteMulti');return L('noteRight',{v:q.pts})}
 function scoreOpts(){const q=curQ();if(!q)return[0,1];if(q.each)return Array.from({length:q.max+1},(_,i)=>i);return[0,q.pts||1]}
@@ -415,8 +456,14 @@ function usable(i,kind){
   if(!C.stages.includes(S.stage))continue;
   if(kind==='pre'&&!(C.when==='pre'||C.when==='preAns'))continue;
   if(kind==='post'&&C.when!=='post')continue;
-  if(kind==='ans'&&C.when!=='preAns')continue;
-  if(c==='swapQ'&&poolLeft()===0)continue;
+  if(kind==='ans'&&!(C.when==='preAns'||C.when==='ans'))continue;
+  if(c==='swapQ'&&(poolLeft()===0||S.qOv))continue;
+  if(c==='king'&&S.qOv)continue;
+  if(c==='discuss'&&t.discussUsed)continue;
+  if(c==='yesno'&&t.yesnoUsed)continue;
+  if(c==='mind'&&t.mindUsed)continue;
+  if(c==='nullify'&&(t.base>0||t.friendBase>0||S.nullify))continue;
+  if(c==='plus'&&S.nullify)continue;
   if(c==='double'&&t.double)continue;
   if(c==='intel'&&t.intelUsed)continue;
   if(c==='mime'&&t.mimeUsed)continue;
@@ -446,16 +493,17 @@ function drawNewQ(k){
  S.used[S.stage].push(S.q);
  S.anim={id:newId(),k,stage:S.stage,q:S.q};
 }
-function drawQuestion(){S.teams.forEach(perQ);S.answers={};S.revealed=[];S.ansFrom=[];S.qCards=[];drawNewQ('draw');S.phase='pre';openWindow('pre')}
+function drawQuestion(){S.teams.forEach(perQ);S.qOv=null;S.nullify=null;S.answers={};S.revealed=[];S.ansFrom=[];S.qCards=[];drawNewQ('draw');S.phase='pre';openWindow('pre')}
 function applyScores(){
  const dbl=[];
- S.teams.forEach((t,i)=>{t.gained=t.base*(t.double?2:1)+t.bonus+t.friendBase;t.score+=t.gained;if(t.double&&t.base>0)dbl.push(i)});
+ S.teams.forEach((t,i)=>{t.gained=S.nullify?0:t.base*(t.double?2:1)+t.bonus+t.friendBase;t.score+=t.gained;if(!S.nullify&&t.double&&t.base>0)dbl.push(i)});
  (S.hist=S.hist||[]).push({st:S.stage,s:S.teams.map(t=>t.score),c:(S.qCards||[]).slice(),ans:{...(S.answers||{})}});
  if(dbl.length)S.anim={id:newId(),k:'x2',teams:dbl};
  S.win=null;S.phase='result';
 }
-function cardEffect(team,card,target){
+function cardEffect(team,card,target,text){
  const t=S.teams[team],C=CARDS[card];
+ if(card==='king'){text=String(text||'').trim().slice(0,120);if(!text)return false}
  if(C.target){
   if(!(target>=0&&target<NT()))return false;
   if(C.target==='other'&&target===team)return false;
@@ -466,13 +514,18 @@ function cardEffect(team,card,target){
   case'swapP':{const tt=S.teams[target];[tt.a,tt.b]=[tt.b,tt.a];[tt.pa,tt.pb]=[tt.pb,tt.pa];S.anim={id:newId(),k:'swapP',team:target};break}
   case'double':t.double=true;break;
   case'intel':t.intelUsed=true;S.anim={id:newId(),k:'intel',team};break;
-  case'mime':t.mimeUsed=true;break;
+  case'mime':t.mimeUsed=true;S.anim={id:newId(),k:'mime',team};break;
+  case'discuss':t.discussUsed=true;S.anim={id:newId(),k:'discuss',team};break;
+  case'yesno':t.yesnoUsed=true;break;
+  case'king':{const o=curQ();S.anim={id:newId(),k:'king',team,ozh:o.zh,ofr:o.fr,txt:text};S.qOv={zh:text,fr:text,by:team};break}
+  case'nullify':S.nullify={by:team};S.anim={id:newId(),k:'nullify',team};break;
+  case'mind':t.mindUsed=true;[t.a,t.b]=[t.b,t.a];[t.pa,t.pb]=[t.pb,t.pa];S.anim={id:newId(),k:'mind',team};break;
   case'friend':t.friend=target;break;
   case'plus':t.bonus+=1;break;
  }
  event({k:'card',c:card,team,target});
  (S.qCards=S.qCards||[]).push({t:team,c:card});
- if(S.win){S.win.used[team]=true;if(usable(team,S.win.kind).length===0)S.win.done[team]=true}
+ if(S.win){S.win.used[team]=true;S.teams.forEach((_,i)=>{if(!S.win.done[i]&&usable(i,S.win.kind).length===0)S.win.done[i]=true})}
 }
 function stageEndDraws(){
  const draws=[],give=(i,why)=>{const c=S.deck.pop()||null;if(c)S.teams[i].hand.push(c);draws.push({team:i,card:c,why})};
@@ -535,7 +588,7 @@ function reduce(a){
  case'stageIntro':S.phase='stageIntro';break;
  case'draw':if(S.phase!=='stageIntro')return false;drawQuestion();break;
  /* 卡片 */
- case'useCard':{if(!S.win||!usable(a.team,S.win.kind).includes(a.card))return false;const r=cardEffect(a.team,a.card,a.target);if(r===false)return false;
+ case'useCard':{if(!S.win||!usable(a.team,S.win.kind).includes(a.card))return false;const r=cardEffect(a.team,a.card,a.target,a.text);if(r===false)return false;
   if(S.win&&S.win.kind==='post'&&S.win.done.every(Boolean))applyScores();break}
  case'useAns':{if(S.phase!=='answering'||!usable(a.team,'ans').includes(a.card))return false;return cardEffect(a.team,a.card)}
  case'done':if(!S.win)return false;S.win.done[a.team]=true;if(S.win.kind==='post'&&S.win.done.every(Boolean))applyScores();break;
@@ -555,7 +608,10 @@ function reduce(a){
  case'nextStage':if(S.phase!=='stageEnd')return false;S.si++;S.stage=S.order[S.si];S.qNum=0;S.q=null;S.phase='stageIntro';break;
  case'pause':S.paused=true;break;
  case'resume':S.paused=false;break;
- case'undo':if(!undoStack.length)return false;S=JSON.parse(undoStack.pop());S.anim=null;ui.pick=null;event({k:'undo'});break;
+ case'undo':{if(!undoStack.length)return false;S=JSON.parse(undoStack.pop());S.anim=null;S.paused=false;ui.pick=null;ui.proxy=null;
+  /* 退回作答中：時間快用完就重新完整倒數，否則從當時剩下的時間繼續 */
+  if(S.phase==='answering'){const full=STAGE_INFO[S.stage].time*1000;S.timer.dur=full;if(!(S.timer.left>1000))S.timer.left=full;S.timer.running=true;lastBeep=null}
+  event({k:'undo'});break}
  case'reset':{const old=S.teams,cfg=S.cfg,pl=S.players||[];S=newState();S.cfg=cfg;S.players=pl;S.teams=old.map(o=>{const t=mkTeam();t.name=o.name;t.a=o.a;t.b=o.b;t.pa=o.pa||null;t.pb=o.pb||null;return t});undoStack=[];break}
  default:return false;
  }
@@ -591,13 +647,13 @@ function cleanState(s){
  let q=s.q==null?null:int(s.q,0,Math.max(0,pool[stage].length-1),null);
  if(['pre','answering','reveal','post'].includes(phase)&&(q==null||!pool[stage][q]))return null;
  const teams=Array.from({length:n},(_,i)=>{const t=s.teams[i]||{};return{name:str(t.name),a:str(t.a),b:str(t.b),pa:vp(t.pa),pb:vp(t.pb),score:num(t.score),base:num(t.base),bonus:num(t.bonus),friendBase:num(t.friendBase),gained:t.gained==null?null:num(t.gained),
-  double:!!t.double,intelUsed:!!t.intelUsed,mimeUsed:!!t.mimeUsed,friend:ti(t.friend),trolledBy:ti(t.trolledBy),hand:(Array.isArray(t.hand)?t.hand:[]).map(card).filter(Boolean).slice(0,14)}});
+  double:!!t.double,intelUsed:!!t.intelUsed,mimeUsed:!!t.mimeUsed,discussUsed:!!t.discussUsed,yesnoUsed:!!t.yesnoUsed,mindUsed:!!t.mindUsed,friend:ti(t.friend),trolledBy:ti(t.trolledBy),hand:(Array.isArray(t.hand)?t.hand:[]).map(card).filter(Boolean).slice(0,14)}});
  const w=s.win&&typeof s.win==='object'&&['pre','post'].includes(s.win.kind)?{kind:s.win.kind,done:teams.map((_,i)=>!!(s.win.done||[])[i]),used:teams.map((_,i)=>!!(s.win.used||[])[i])}:null;
  const e=s.event&&typeof s.event==='object'&&['card','undo'].includes(s.event.k)?{id:str(s.event.id,40),k:s.event.k,c:card(s.event.c)||'intel',team:int(s.event.team,0,n-1),target:ti(s.event.target)}:null;
  let an=null;
- if(s.anim&&typeof s.anim==='object'){const A=s.anim,k=['draw','swap','swapP','x2','intel','race'].includes(A.k)?A.k:null;
-  if(k){const st=int(A.stage,0,2);an={id:str(A.id,40),k,stage:st,q:int(A.q,0,Math.max(0,pool[st].length-1)),team:int(A.team,0,n-1),teams:(Array.isArray(A.teams)?A.teams:[]).slice(0,4).map(x=>int(x,0,n-1))}}}
- return{cardsOn:!!s.cardsOn,phase,teams,deck:[],pool,order:(Array.isArray(s.order)?s.order:[]).slice(0,3).map(x=>int(x,0,2)),si:int(s.si,0,2),counts:[0,1,2].map(k=>int((s.counts||[])[k],0,40)),
+ if(s.anim&&typeof s.anim==='object'){const A=s.anim,k=['draw','swap','swapP','x2','intel','race','mime','discuss','king','nullify','mind'].includes(A.k)?A.k:null;
+  if(k){const st=int(A.stage,0,2);an={id:str(A.id,40),k,stage:st,q:int(A.q,0,Math.max(0,pool[st].length-1)),team:int(A.team,0,n-1),teams:(Array.isArray(A.teams)?A.teams:[]).slice(0,4).map(x=>int(x,0,n-1)),ozh:str(A.ozh,150),ofr:str(A.ofr,250),txt:str(A.txt,120)}}}
+ return{cardsOn:!!s.cardsOn,qOv:s.qOv&&typeof s.qOv==='object'?{zh:str(s.qOv.zh,120),fr:str(s.qOv.fr,120),by:int(s.qOv.by,0,n-1)}:null,nullify:s.nullify&&typeof s.nullify==='object'?{by:int(s.nullify.by,0,n-1)}:null,phase,teams,deck:[],pool,order:(Array.isArray(s.order)?s.order:[]).slice(0,3).map(x=>int(x,0,2)),si:int(s.si,0,2),counts:[0,1,2].map(k=>int((s.counts||[])[k],0,40)),
   stage,qNum:int(s.qNum,0,40),used:[[],[],[]],q,win:w,timer:{dur:0,left:Math.max(0,num(s.timer&&s.timer.left)),running:false},paused:!!s.paused,event:e,anim:an,
   draws:Array.isArray(s.draws)?s.draws.slice(0,12).map(d=>({team:int(d&&d.team,0,n-1),card:card(d&&d.card),why:d&&d.why==='all'?'all':'low'})):null,
   players:(Array.isArray(s.players)?s.players:[]).slice(0,40).map(p=>({id:vp(p&&p.id),name:str(p&&p.name)})).filter(p=>p.id),
@@ -633,7 +689,7 @@ function hostNet(){
    if(!d||d.t!=='act'||!d.a||typeof d.a!=='object'||typeof d.a.type!=='string')return;
    const x=d.a,N=NT(),pid=validPid(x.pid);if(pid)c.pid=pid;
    dispatch({type:x.type,team:x.team===undefined?undefined:int(x.team,0,N-1,-1),card:card(x.card)||undefined,target:x.target===undefined?undefined:int(x.target,0,N-1,-1),field:typeof x.field==='string'?x.field:undefined,value:typeof x.value==='string'?x.value:undefined,
-    pid,name:typeof x.name==='string'?x.name.slice(0,12):undefined,slot:x.slot==='a'||x.slot==='b'?x.slot:undefined,old:validPid(x.old),text:typeof x.text==='string'?x.text.slice(0,80):undefined},true);
+    pid,name:typeof x.name==='string'?x.name.slice(0,12):undefined,slot:x.slot==='a'||x.slot==='b'?x.slot:undefined,old:validPid(x.old),text:typeof x.text==='string'?x.text.slice(0,120):undefined},true);
   });
   c.on('close',()=>{conns=conns.filter(x=>x!==c);updateNet()});
   c.on('error',()=>{});
@@ -742,6 +798,26 @@ function playAnim(a){
   if(!S.teams[a.team])return;
   html=ov(dur,`<div class="fx-title">${L('an_intel')}</div><div class="magbox"><div class="mq-text"><b>?</b>？？</div><div class="mag">🔍</div></div><div class="fx-sub">${L('an_intelSub',{t:esc(tn(a.team))})}</div>`);
   if(role==='host'){[0,500,1000,1500].forEach(d=>setTimeout(()=>beep(900,.05),d));setTimeout(()=>beep(1250,.3),2100)}
+ }else if(a.k==='mime'){
+  if(!S.teams[a.team])return;
+  html=ov(dur,`<div class="fx-title">${L('an_mime')}</div><div class="mimebox"><div class="mfig"><span class="mh l">🖐️</span>🧍<span class="mh r">✋</span></div></div><div class="fx-sub">${L('an_mimeSub',{t:esc(tn(a.team))})}</div>`);
+  if(role==='host'){[0,450,900,1350,1800].forEach((d,k)=>setTimeout(()=>beep(k%2?720:600,.07),d))}
+ }else if(a.k==='discuss'){
+  if(!S.teams[a.team])return;
+  html=ov(dur,`<div class="fx-title">${L('an_discuss')}</div><div class="whisper"><span class="wa">🗣️</span><span class="bub">💬</span><span class="bub b2">🤫</span><span class="bub b3">💭</span><span class="wb">👂</span></div><div class="fx-sub">${L('an_discussSub',{t:esc(tn(a.team))})}</div>`);
+  if(role==='host'){[0,400,800,1200].forEach(d=>setTimeout(()=>beep(500,.05),d))}
+ }else if(a.k==='king'){
+  if(!S.teams[a.team])return;
+  const old=LANG==='fr'&&a.ofr?a.ofr:a.ozh;
+  html=ov(dur,`<div class="fx-title">${L('an_king')}</div><div class="kingbox"><div class="kking">🤴</div><div class="kcard"><span class="knew">${esc(a.txt)}</span><div class="kold">${esc(old)}</div></div><div class="mop"><i>🧹</i></div></div><div class="fx-sub">${L('an_kingSub',{t:esc(tn(a.team))})}</div>`);
+  if(role==='host'){for(let k=0;k<7;k++)setTimeout(()=>beep(300+k*20,.05),500+k*180);setTimeout(()=>beep(990,.3),1850)}
+ }else if(a.k==='nullify'){
+  dur=5;html=ov(dur,`<div class="fx-title">${L('an_nullify')}</div><div class="nullcard"><div class="pcard">${cardFace('nullify')}</div></div><div class="fx-sub">${L('an_nullifySub')}</div><div class="flash"></div>`);
+  if(role==='host'){for(let k=0;k<10;k++)setTimeout(()=>beep(200+k*90,.12),k*300);setTimeout(()=>beep(1500,.8),3300)}
+ }else if(a.k==='mind'){
+  if(!S.teams[a.team])return;dur=5;
+  html=ov(dur,`<div class="fx-title">${L('an_mind')}</div><div class="mindbox"><div class="mfig"><span class="mshadow">🧍</span><span class="mself">🧍</span><i class="glow"></i></div></div><div class="fx-sub">${L('an_mindSub',{t:esc(tn(a.team))})}</div>`);
+  if(role==='host'){beep(400,.4);setTimeout(()=>beep(800,.5),1200);setTimeout(()=>beep(600,.5),2700)}
  }
  $('#fx').innerHTML=html;
  clearTimeout(animT);animT=setTimeout(()=>$('#fx').innerHTML='',dur*1000);
@@ -957,7 +1033,7 @@ function noteFor(s,q){if(s===0)return L('noteEasy');if(q.each)return L('noteEach
 function renderStage(ro){
  const st=S.stage,q=curQ(),cnt=S.counts[st];
  const roleLine=t=>t.a&&t.b?L('roleMini',{a:esc(t.a),b:esc(t.b)}):L('roleMiniG');
- const qBlock=sm=>`<div class="badge" style="background:${STAGE_COL[st][0]};color:#1a0f22">${sn(st)} · ${L('qof',{n:S.qNum+1,m:cnt})}</div><div class="qtext ${sm?'sm':''}">${esc(qt(q))}</div><div class="note">${qNote()}</div>${st>0&&!sm?`<div class="rolemini">${L('roleMiniG')}</div>`:''}`;
+ const qBlock=sm=>`<div class="badge" style="background:${STAGE_COL[st][0]};color:#1a0f22">${sn(st)} · ${L('qof',{n:S.qNum+1,m:cnt})}</div><div class="qtext ${sm?'sm':''}">${esc(qt(q))}</div><div class="note">${qNote()}</div>${S.qOv?`<div class="note">👑 ${L('kingBy',{t:esc(tn(S.qOv.by))})}</div>`:''}${st>0&&!sm?`<div class="rolemini">${L('roleMiniG')}</div>`:''}`;
  let main='',ctrl='',scores=true;
  switch(S.phase){
  case'config':
@@ -972,14 +1048,14 @@ function renderStage(ro){
  case'intro':main=`<h1 class="title">${L('teamsTonight')}</h1><div class="intro" style="--n:${NT()}">${S.teams.map((t,i)=>`<div class="icard" style="--c:${TC[i]}"><div class="iname">${esc(tn(i))}</div><div>🎯 ${L('guesser')}：${esc(t.a||'—')}</div><div>💭 ${L('guessed')}：${esc(t.b||'—')}</div></div>`).join('')}</div><p class="rule muted">${L('penBoard')}</p>`;
   ctrl=btn(L('toOath'),'oath');scores=false;break;
  case'oath':main=`<h1 class="title">${L('oathTitle')}</h1><div class="oath">${L('oath')}</div>`;ctrl=btn(L(S.cardsOn?'dealBtn':'oathGo'),'deal');scores=false;break;
- case'deal':main=`<h1 class="title">${L('dealTitle')}</h1><p class="rule muted">${L('dealHint')}</p><div class="deckgrid">${Object.keys(CARDS).filter(c=>(S.deckDef||{})[c]>0).map(c=>`<div class="pcard">${cardFace(c)}<span class="ncount">×${S.deckDef[c]}</span></div>`).join('')}</div>`;ctrl=btn(L('startStage',{s:sn(S.order[0])}),'stageIntro');break;
+ case'deal':main=`<h1 class="title">${L('dealTitle',{n:S.dealN})}</h1><p class="rule muted">${L('dealHint')}</p><div class="deckgrid">${Object.keys(CARDS).filter(c=>(S.deckDef||{})[c]>0).map(c=>`<div class="pcard">${cardFace(c)}<span class="ncount">×${S.deckDef[c]}</span></div>`).join('')}</div>`;ctrl=btn(L('startStage',{s:sn(S.order[0])}),'stageIntro');break;
  case'stageIntro':main=`<div class="badge" style="background:${STAGE_COL[st][0]};color:#1a0f22">${L('stageN',{n:S.si+1})}</div><h1 class="title huge" style="color:${STAGE_COL[st][0]}">${sn(st)}</h1><p class="rule">${sr(st)}</p>${st>0?howtoHTML():''}<p class="muted">${L('total',{n:cnt})}</p>`;ctrl=btn(L('drawFirst'),'draw');break;
  case'pre':{const all=S.win&&S.win.done.every(Boolean),anyUsed=S.win&&S.win.used.some(Boolean);
   main=qBlock()+(S.cardsOn?`<div class="hint">${all?L(anyUsed?'allDecided':'allNoCard'):L('cardTime')}</div>`:'');ctrl=btn(L(all?'startTimer':'startTimerSkip',{n:STAGE_INFO[st].time}),'startAnswer');break}
  case'answering':main=qBlock(true)+'<div class="timer"></div>'+(st===0?`<div class="hint">${L('phaseAnsEasy')}</div>`:`<div class="rolemini">${L('roleMiniG')}</div>`);ctrl=`<button class="ghost big" data-act="endAnswer">${L('endEarly')}</button>`;break;
  case'reveal':main=qBlock(true)+`<h2 class="call">${L(st===0?'pointNow':'revealT')}</h2>${ansPanelHTML(ro)}${scoringHTML(ro)}`;ctrl=btn(L('confirm'),'confirmScore');scores=false;break;
  case'post':main=qBlock(true)+`<h2 class="call">${L('plusTime')}</h2><p class="hint">${L('plusHint')}</p>${ansPanelHTML(ro)}`;ctrl=`<button class="ghost big" data-act="apply">${L('applyNow')}</button>`;break;
- case'result':main=`<h2 class="call">${L('gainTitle')}</h2>`+ansPanelHTML(ro);ctrl=btn(L(S.qNum+1<cnt?'next':'stageDone'),'next');break;
+ case'result':main=`<h2 class="call">${L('gainTitle')}</h2>`+(S.nullify?`<p class="hint">${L('nullHint',{t:esc(tn(S.nullify.by))})}</p>`:'')+ansPanelHTML(ro);ctrl=btn(L(S.qNum+1<cnt?'next':'stageDone'),'next');break;
  case'stageEnd':main=`<h1 class="title">${L('stageOver',{s:sn(st)})}</h1>${drawsPublic()}`;ctrl=btn(L('gotoStage',{s:sn(S.order[S.si+1])}),'nextStage');break;
  case'final':main=finalHTML();ctrl=`<button class="ghost" data-act="reset">${L('again')}</button>`;scores=false;break;
  }
@@ -1018,6 +1094,13 @@ function handHTML(t){
   const ok=lv&&lv.list.includes(c);
   const open=ok?`<button class="pcard live" data-act="${lv.act}" data-team="${me}" data-card="${c}">`:`<div class="pcard${lv?' dim':''}">`;
   return `${open}${cardFace(c)}${ok?'</button>':'</div>'}`}).join('')}</div>`;
+}
+function kingModal(){
+ if(!ui.king||!isPlayer())return'';
+ if(S.phase!=='pre'||!S.teams[me].hand.includes('king')||S.qOv){ui.king=null;return''}
+ return `<div class="modal" style="z-index:46;align-items:center"><div class="sheet"><h2>👑 ${L('kingQ')}</h2><p class="mq">${L('kingHint',{note:qNote()})}</p>
+  <div class="ansbox"><textarea id="kingIn" maxlength="120" placeholder="${L('kingPh')}">${esc(ui.kingDraft||'')}</textarea></div>
+  <button class="big full" data-act="kingSubmit">${L('kingGo')}</button><button class="ghost big full" data-act="kingCancel">${L('cancel')}</button></div></div>`;
 }
 function cardModal(){
  if(!S.win||!isPlayer()||S.win.done[me])return'';
@@ -1066,7 +1149,7 @@ function renderClient(){
  if(S&&S.phase!=='answering')ui.draft=null;
  if(ui.zoom&&!(S&&(S.answers||{})[myPid]))ui.zoom=null;
  const ae=document.activeElement;
- if(S&&isPlayer()&&ae&&ae.dataset&&((ae.dataset.tf!==undefined&&['config','lobby'].includes(S.phase))||(ae.id==='ansIn'&&S.phase==='answering'))){updateNet();return}
+ if(S&&isPlayer()&&ae&&ae.dataset&&((ae.dataset.tf!==undefined&&['config','lobby'].includes(S.phase))||(ae.id==='ansIn'&&S.phase==='answering')||(ae.id==='kingIn'&&ui.king))){updateNet();return}
  if(!S){app.innerHTML=`<div class="toplang">${langSel()}</div><div class="center"><div style="font-size:4em">💞</div><p id="net">${netBadge()}</p></div>`;return}
  if(me==='spec'){renderStage(true);return}
  if(!isPlayer()){app.innerHTML=pickerHTML();return}
@@ -1086,8 +1169,8 @@ function renderClient(){
  case'pre':case'answering':case'reveal':case'post':{
   const ph={pre:L('phasePre'),answering:L(st===0?'phaseAnsEasy':'phaseAns'),reveal:L('phaseRev'),post:L('phasePost')}[S.phase];
   const roleL=st>0?`<div class="rolemini">${t.a&&t.b?L('roleMini',{a:esc(t.a),b:esc(t.b)}):L('roleMiniG')}</div>`:'';
-  mid=`<div class="badge" style="background:${STAGE_COL[st][0]};color:#1a0f22">${sn(st)} · ${L('qof',{n:S.qNum+1,m:S.counts[st]})}</div><div class="cqtext">${esc(qt(q))}</div><div class="note">${qNote()}</div>${roleL}${S.phase==='answering'?'<div class="timer"></div>':''}<div class="phase">${ph}</div><div>${teamTags(me)}</div>${answerHTML()}`;break}
- case'result':mid=`<p>${L('thisQ')}</p><div class="gv" style="--c:${TC[me]}">+${t.gained||0}</div>${answerHTML()}`;break;
+  mid=`<div class="badge" style="background:${STAGE_COL[st][0]};color:#1a0f22">${sn(st)} · ${L('qof',{n:S.qNum+1,m:S.counts[st]})}</div><div class="cqtext">${esc(qt(q))}</div><div class="note">${qNote()}</div>${S.qOv?`<div class="note">👑 ${L('kingBy',{t:esc(tn(S.qOv.by))})}</div>`:''}${roleL}${S.phase==='answering'?'<div class="timer"></div>':''}<div class="phase">${ph}</div><div>${teamTags(me)}</div>${answerHTML()}`;break}
+ case'result':mid=`<p>${L('thisQ')}</p><div class="gv" style="--c:${TC[me]}">+${t.gained||0}</div>${S.nullify?`<p class="hint">${L('nullHint',{t:esc(tn(S.nullify.by))})}</p>`:''}${answerHTML()}`;break;
  case'stageEnd':{const mine=(S.draws||[]).filter(d=>d.team===me);mid=`<p>${L('stageOver',{s:sn(st)})}</p>${mine.length?`<p>${L('youDrew')} <b>${mine.map(d=>d.card?CARDS[d.card].icon+' '+cn(d.card):L('deckEmpty')).join('、')}</b></p>`:''}`;break}
  case'final':mid=finalHTML();break;
  }
@@ -1098,7 +1181,7 @@ function renderClient(){
   ${S.cardsOn?`<section class="panel"><h3>${L('myCards',{n:t.hand.length})}${t.hand.length>2?` <span class="swipe">${L('swipe')}</span>`:''}</h3>${(()=>{const lv=liveCards();return lv&&lv.list.length?`<div class="tapnote">${L('tapToUse')}</div>`:''})()}${handHTML(t)}<p class="muted small">${L('autoAsk')}</p></section>`:''}
   <section class="panel"><h3>${L('scoreTitle')}</h3>${S.teams.map((x,i)=>`<div class="mini" style="--c:${TC[i]}"><span>${esc(tn(i))}</span><b>${x.score}</b></div>`).join('')}</section>
   <button class="pausebig" data-act="pause">${L('pause')}</button>
- </div>${cardModal()}${confirmModal()}${pauseOverlay()}${zoomOverlay()}`;
+ </div>${cardModal()}${confirmModal()}${kingModal()}${pauseOverlay()}${zoomOverlay()}`;
 }
 
 /* ============ 操作 ============ */
@@ -1136,9 +1219,13 @@ function handleLocal(a){
  case'useAns':if(role==='client'&&!a.confirmed){ui.confirm={team:a.team,card:a.card,act:'useAns'};render();return true}return false;
  case'confirmCancel':ui.confirm=null;render();return true;
  case'confirmUse':{const c=ui.confirm;ui.confirm=null;if(!c){render();return true}
+  if(c.card==='king'){ui.king={team:c.team};ui.kingDraft='';render();return true}
   if(c.act==='useCard'&&CARDS[c.card].target){ui.pick={team:c.team,card:c.card};render();return true}
   dispatch({type:c.act,team:c.team,card:c.card});render();return true}
+ case'kingCancel':ui.king=null;render();return true;
+ case'kingSubmit':{const el=$('#kingIn'),v=((el&&el.value)||ui.kingDraft||'').trim().slice(0,120);if(!v){toast(L('kingEmpty'));return true}const k=ui.king;ui.king=null;ui.kingDraft='';if(k)dispatch({type:'useCard',team:k.team,card:'king',text:v});render();return true}
  case'useCard':
+  if(role==='host'&&a.card==='king'&&!a.text){const v=(typeof prompt==='function'?prompt(L('kingQ')):'')||'';if(!v.trim())return true;a.text=v.trim().slice(0,120);ui.pick=null;return false}
   if(role==='client'&&a.target===undefined&&!a.confirmed){ui.confirm={team:a.team,card:a.card,act:'useCard'};render();return true}
   if(CARDS[a.card]&&CARDS[a.card].target&&a.target===undefined){ui.pick={team:a.team,card:a.card};render();return true}ui.pick=null;return false;
  }
@@ -1159,13 +1246,14 @@ let tfT;
 function sendTF(el){clearTimeout(tfT);if(!isPlayer())return;S.teams[me][el.dataset.tf]=el.value;dispatch({type:'setField',team:me,field:el.dataset.tf,value:el.value})}
 let ansT;
 document.addEventListener('input',e=>{const el=e.target;if(role==='client'&&el.dataset.tf!==undefined){clearTimeout(tfT);tfT=setTimeout(()=>sendTF(el),400)}
+ if(role==='client'&&el.id==='kingIn')ui.kingDraft=el.value;
  if(role==='client'&&el.id==='ansIn'){ui.draft=el.value;clearTimeout(ansT);ansT=setTimeout(()=>dispatch({type:'answer',text:el.value}),700)}});
 document.addEventListener('change',e=>{
  const el=e.target;
  if(el.dataset.lang!==undefined){LANG=el.value==='fr'?'fr':'zh';localStorage.setItem('cplq-lang',LANG);render();return}
  if(role==='client'&&el.dataset.tf!==undefined)sendTF(el);
 });
-document.addEventListener('focusout',e=>{if(role==='client'&&e.target.dataset&&(e.target.dataset.tf!==undefined||e.target.id==='ansIn'))setTimeout(render,60)});
+document.addEventListener('focusout',e=>{if(role==='client'&&e.target.dataset&&(e.target.dataset.tf!==undefined||e.target.id==='ansIn'||e.target.id==='kingIn'))setTimeout(render,60)});
 document.addEventListener('keydown',e=>{
  if(e.target.id==='joinCode'&&e.key==='Enter')handleLocal({type:'join'});
  if(e.target.id==='pname'&&e.key==='Enter')handleLocal({type:'saveName'});
