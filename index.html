@@ -147,9 +147,14 @@ span.opt{display:inline-block;padding:.65em 1.1em;border-radius:14px;font-weight
 /* 手牌列：撲克牌式卡片，左右滑動 */
 .hand{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 6px 14px;margin:0 -6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .hand::-webkit-scrollbar{display:none}
-.pcard{flex:0 0 42%;max-width:190px;scroll-snap-align:start;background:#fff8ee;border-radius:12px;padding:5px;box-shadow:0 6px 16px rgba(0,0,0,.35)}
+.pcard{flex:0 0 42%;max-width:190px;scroll-snap-align:start;background:#fff8ee;border-radius:12px;padding:5px;box-shadow:0 6px 16px rgba(0,0,0,.35);display:flex;font:inherit;color:inherit;border:0;margin:0;text-align:center;cursor:default}
+button.pcard{cursor:pointer;font-weight:400}
+.pcard.live{box-shadow:0 0 0 3px #ffc74d,0 0 22px rgba(255,199,77,.75);animation:cardpulse 1.4s ease-in-out infinite}
+@keyframes cardpulse{50%{box-shadow:0 0 0 3px #ffc74d,0 0 34px rgba(255,199,77,1)}}
+.pcard.dim{opacity:.55;filter:grayscale(.7)}
+.tapnote{color:#ffd36b;font-weight:700;font-size:.85em}
 .pcard:nth-child(3n+1){transform:rotate(-2deg)}.pcard:nth-child(3n){transform:rotate(2deg)}
-.pin{border:1.5px solid var(--k);border-radius:9px;padding:22px 8px;position:relative;min-height:175px;color:#2a1a10;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.pin{flex:1;width:100%;border:1.5px solid var(--k);border-radius:9px;padding:22px 8px;position:relative;min-height:175px;color:#2a1a10;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
 .pin .cc{position:absolute;font-size:15px;line-height:1}.pin .cc1{top:6px;left:6px}.pin .cc2{bottom:6px;right:6px;transform:rotate(180deg)}
 .pic{font-size:32px;line-height:1.1}.pnm{font-weight:900;font-size:15px;color:var(--k)}.pds{font-size:11px;color:#6a5a4a;line-height:1.45}
 .swipe{font-weight:400;color:#c9b3d6;font-size:.85em}
@@ -228,7 +233,7 @@ zh:{title:'默契大挑戰',host:'我是主持人（接投影機・計分）',re
  resetConfirm:'確定要重新開始？分數和卡片會清空（隊名保留）',pickTitle:'你要用什麼身分加入？',joinTeam:'🎮 加入 {t}',noNames:'（還沒填名字）',spectator:'👀 當觀眾',specDesc:'看跟大螢幕一樣的畫面，隨時看分數',switchBtn:'換隊／觀眾',
  setupTeam:'✏️ 設定你們這隊',teamName:'隊名',guesserLong:'🎯 猜題者（負責猜的人）',guessedLong:'💭 被猜者（被猜的人）',nameP:'名字',swapRolesBtn:'⇄ 對調猜題者／被猜者',lockHint:'同隊任何一支手機都能改；主持人按開始後就鎖定',
  introC:'介紹隊伍中，準備好筆和白板 ✍️',dealC:'🃏 你們抽到的卡片在下面！（別隊看不到）',phasePre:'🃏 卡片時間',phaseAns:'✍️ 作答中！',phaseAnsEasy:'⏳ 倒數後，指出答案！',phaseRev:'📝 公布答案，等待計分…',phasePost:'➕ 加分卡時間',
- thisQ:'本題你們隊',myCards:'我們的卡片（{n}）',autoAsk:'可以用卡的時候會自動跳出來問你；只有你們隊看得到',swipe:'← 左右滑動 →',scoreTitle:'比分',x2:'本題 ×2',
+ thisQ:'本題你們隊',myCards:'我們的卡片（{n}）',autoAsk:'可以用卡的時候會自動跳出來問你；只有你們隊看得到',swipe:'← 左右滑動 →',tapToUse:'👆 點一下發光的卡片就能使用',confirmQ:'確定要使用這張卡嗎？',confirmYes:'✅ 確定使用',scoreTitle:'比分',x2:'本題 ×2',
  useCardQ:'🃏 要使用卡片嗎？',plusQ:'🎉 答對了！要用加分卡嗎？',qLabel:'題目：',use:'使用{c}',have:'（有 {n} 張）',noThanks:'不用了 👌',
  trolledBy:'😈 由 {t} 代答',friendTag:'🤝 加猜 {o}',friendRow:'🤝 {t} 的好友卡：猜 {o} 的答案',
  howTitle:'📝 怎麼寫答案？',howG:'🎯 <b>猜題者</b>：寫下你猜「被猜者會寫的答案」',howD:'💭 <b>被猜者</b>：寫下關於自己的真實答案',howOk:'✅ 兩人寫的一樣（意思相同也算）就得分',howNo:'🤫 寫的時候不能偷看、不能討論',
@@ -256,7 +261,7 @@ fr:{title:"Le Grand Défi",host:"Je suis l'animateur (projecteur + score)",resum
  resetConfirm:"Recommencer ? Les points et les cartes seront effacés (les noms restent).",pickTitle:"Comment veux-tu participer ?",joinTeam:"🎮 Rejoindre {t}",noNames:"(pas encore de noms)",spectator:"👀 Spectateur",specDesc:"Le même écran que le projecteur, avec les scores",switchBtn:"Changer",
  setupTeam:"✏️ Configurez votre équipe",teamName:"Nom d'équipe",guesserLong:"🎯 Devineur (celui qui devine)",guessedLong:"💭 Deviné(e) (la personne à deviner)",nameP:"Prénom",swapRolesBtn:"⇄ Inverser les rôles",lockHint:"N'importe quel téléphone de l'équipe peut modifier ; verrouillé au lancement",
  introC:"Présentation des équipes, préparez stylo et ardoise ✍️",dealC:"🃏 Vos cartes sont plus bas ! (les autres ne les voient pas)",phasePre:"🃏 Moment des cartes",phaseAns:"✍️ À vous d'écrire !",phaseAnsEasy:"⏳ À la fin du compte à rebours, pointez la réponse !",phaseRev:"📝 Réponses ! En attente des points…",phasePost:"➕ Moment des bonus",
- thisQ:"Votre équipe sur cette question",myCards:"Nos cartes ({n})",autoAsk:"On te proposera les cartes au bon moment ; seule ton équipe les voit",swipe:"← glissez →",scoreTitle:"Scores",x2:"×2 sur cette question",
+ thisQ:"Votre équipe sur cette question",myCards:"Nos cartes ({n})",autoAsk:"On te proposera les cartes au bon moment ; seule ton équipe les voit",swipe:"← glissez →",tapToUse:"👆 Touchez une carte lumineuse pour l'utiliser",confirmQ:"Utiliser cette carte ?",confirmYes:"✅ Oui, utiliser",scoreTitle:"Scores",x2:"×2 sur cette question",
  useCardQ:"🃏 Utiliser une carte ?",plusQ:"🎉 Bonne réponse ! Utiliser un Bonus ?",qLabel:"Question : ",use:"Utiliser « {c} »",have:" ({n} cartes)",noThanks:"Non merci 👌",
  trolledBy:"😈 {t} répond à sa place",friendTag:"🤝 devine aussi {o}",friendRow:"🤝 Carte Ami de {t} : deviner la réponse de {o}",
  howTitle:"📝 Comment répondre ?",howG:"🎯 <b>Devineur</b> : écris la réponse que, selon toi, la personne devinée va écrire",howD:"💭 <b>Deviné(e)</b> : écris ta vraie réponse sur toi-même",howOk:"✅ Si les deux réponses correspondent (même sens), vous marquez",howNo:"🤫 Interdit de regarder ou de se concerter",
@@ -318,7 +323,7 @@ const cn=c=>CARDS[c][LANG].n, cd=c=>CARDS[c][LANG].d;
 
 /* ============ 狀態 ============ */
 let role=null,S=null,code=null,me=null,netMsg=null;
-let undoStack=[],lastEventId,lastAnimId,ui={pick:null,proxy:null};
+let undoStack=[],lastEventId,lastAnimId,ui={pick:null,proxy:null,confirm:null};
 let peer=null,conns=[],conn=null,peerOk=false;
 const app=document.getElementById('app');
 const $=s=>document.querySelector(s);
@@ -828,14 +833,35 @@ function renderStage(ro){
   ${ro||!ctrl?'':`<footer class="ctrl">${ctrl}</footer>`}
  </div>${pauseOverlay()}`;
 }
+/* 玩家目前能用哪些卡：卡片時間的彈窗，或作答中（情報卡、比手劃腳卡） */
+function liveCards(){
+ if(!isPlayer())return null;
+ if(S.win&&!S.win.done[me])return{list:usable(me,S.win.kind),act:'useCard'};
+ if(S.phase==='answering'){const l=usable(me,'ans');return{list:l,act:'useAns'}}
+ return null;
+}
+const cardFace=c=>`<div class="pin" style="--k:${CARD_COL[c]||'#555'}"><span class="cc cc1">${CARDS[c].icon}</span><span class="cc cc2">${CARDS[c].icon}</span><div class="pic">${CARDS[c].icon}</div><div class="pnm">${cn(c)}</div><div class="pds">${cd(c)}</div></div>`;
+/* 點卡片後的「確定要使用嗎？」視窗 */
+function confirmModal(){
+ if(!ui.confirm||!isPlayer())return'';
+ const lv=liveCards(),c=ui.confirm.card;
+ if(!lv||!lv.list.includes(c)){ui.confirm=null;return''}
+ return `<div class="modal" style="z-index:45;align-items:center"><div class="sheet" style="align-items:center"><h2>${L('confirmQ')}</h2>
+  <div class="pcard" style="flex:none;width:min(58vw,220px);max-width:none;transform:none">${cardFace(c)}</div>
+  <button class="big full" data-act="confirmUse">${L('confirmYes')}</button><button class="ghost big full" data-act="confirmCancel">${L('cancel')}</button></div></div>`;
+}
 function handHTML(t){
  if(!t.hand.length)return `<p class="muted">${L('noCards')}</p>`;
- return `<div class="hand">${t.hand.map(c=>`<div class="pcard"><div class="pin" style="--k:${CARD_COL[c]||'#555'}"><span class="cc cc1">${CARDS[c].icon}</span><span class="cc cc2">${CARDS[c].icon}</span><div class="pic">${CARDS[c].icon}</div><div class="pnm">${cn(c)}</div><div class="pds">${cd(c)}</div></div></div>`).join('')}</div>`;
+ const lv=liveCards();
+ return `<div class="hand">${t.hand.map(c=>{
+  const ok=lv&&lv.list.includes(c);
+  const open=ok?`<button class="pcard live" data-act="${lv.act}" data-team="${me}" data-card="${c}">`:`<div class="pcard${lv?' dim':''}">`;
+  return `${open}${cardFace(c)}${ok?'</button>':'</div>'}`}).join('')}</div>`;
 }
 function cardModal(){
  if(!S.win||!isPlayer()||S.win.done[me])return'';
  const list=usable(me,S.win.kind),pre=S.win.kind==='pre';
- const body=ui.pick&&ui.pick.team===me?targetChooser(me,ui.pick.card,false):list.map(c=>`<button class="cardbtn" data-act="useCard" data-team="${me}" data-card="${c}"><span class="cicon">${CARDS[c].icon}</span><span><b>${L('use',{c:cn(c)})}${cnt(me,c)>1?L('have',{n:cnt(me,c)}):''}</b><small>${cd(c)}</small></span></button>`).join('');
+ const body=ui.pick&&ui.pick.team===me?targetChooser(me,ui.pick.card,false):`<p class="mq tapnote">${L('tapToUse')}</p>${handHTML(S.teams[me])}`;
  return `<div class="modal"><div class="sheet"><h2>${L(pre?'useCardQ':'plusQ')}</h2>${pre&&curQ()?`<p class="mq">${L('qLabel')}${esc(qt(curQ()))}</p>`:''}${body}<button class="ghost big full" data-act="done" data-team="${me}">${L(pre?'noThanks':'no')}</button></div></div>`;
 }
 function renderClient(){
@@ -864,9 +890,8 @@ function renderClient(){
  case'stageIntro':mid=`<div class="badge" style="background:${STAGE_COL[st][0]};color:#1a0f22">${sn(st)}</div><p>${sr(st)}</p>${st>0?howtoHTML():''}`;break;
  case'pre':case'answering':case'reveal':case'post':{
   const ph={pre:L('phasePre'),answering:L(st===0?'phaseAnsEasy':'phaseAns'),reveal:L('phaseRev'),post:L('phasePost')}[S.phase];
-  const ansBtns=S.phase==='answering'?usable(me,'ans').map(c=>`<button data-act="useAns" data-team="${me}" data-card="${c}">${CARDS[c].icon} ${L('use',{c:cn(c)})}${cntTag(me,c)}</button>`).join(''):'';
   const roleL=st>0?`<div class="rolemini">${t.a&&t.b?L('roleMini',{a:esc(t.a),b:esc(t.b)}):L('roleMiniG')}</div>`:'';
-  mid=`<div class="badge" style="background:${STAGE_COL[st][0]};color:#1a0f22">${sn(st)} · ${L('qof',{n:S.qNum+1,m:S.counts[st]})}</div><div class="cqtext">${esc(qt(q))}</div><div class="note">${qNote()}</div>${roleL}${S.phase==='answering'?'<div class="timer"></div>':''}<div class="phase">${ph}</div>${ansBtns}<div>${teamTags(me)}</div>`;break}
+  mid=`<div class="badge" style="background:${STAGE_COL[st][0]};color:#1a0f22">${sn(st)} · ${L('qof',{n:S.qNum+1,m:S.counts[st]})}</div><div class="cqtext">${esc(qt(q))}</div><div class="note">${qNote()}</div>${roleL}${S.phase==='answering'?'<div class="timer"></div>':''}<div class="phase">${ph}</div><div>${teamTags(me)}</div>`;break}
  case'result':mid=`<p>${L('thisQ')}</p><div class="gv" style="--c:${TC[me]}">+${t.gained||0}</div>`;break;
  case'stageEnd':{const mine=(S.draws||[]).filter(d=>d.team===me);mid=`<p>${L('stageOver',{s:sn(st)})}</p>${mine.length?`<p>${L('youDrew')} <b>${mine.map(d=>d.card?CARDS[d.card].icon+' '+cn(d.card):L('deckEmpty')).join('、')}</b></p>`:''}`;break}
  case'final':mid=finalHTML();break;
@@ -874,11 +899,11 @@ function renderClient(){
  app.innerHTML=`<div class="client" style="--c:${TC[me]}">
   <header class="cbar"><span class="rolebadge">${L('rolePlayer')}</span><b>${esc(tn(me))}</b><span class="cscore">${t.score} ${L('ptsUnit')}</span><span id="net" class="small">${netBadge()}</span><button class="ghost sm" data-act="leaveTeam">${L('switchBtn')}</button>${langSel()}</header>
   <section class="panel center-t">${mid}</section>
-  <button class="pausebig" data-act="pause">${L('pause')}</button>
   <section class="panel"><div class="roles">🎯 ${L('guesser')} <b>${esc(t.a||'—')}</b>　💭 ${L('guessed')} <b>${esc(t.b||'—')}</b></div></section>
-  ${S.cardsOn?`<section class="panel"><h3>${L('myCards',{n:t.hand.length})}${t.hand.length>2?` <span class="swipe">${L('swipe')}</span>`:''}</h3>${handHTML(t)}<p class="muted small">${L('autoAsk')}</p></section>`:''}
+  ${S.cardsOn?`<section class="panel"><h3>${L('myCards',{n:t.hand.length})}${t.hand.length>2?` <span class="swipe">${L('swipe')}</span>`:''}</h3>${(()=>{const lv=liveCards();return lv&&lv.list.length?`<div class="tapnote">${L('tapToUse')}</div>`:''})()}${handHTML(t)}<p class="muted small">${L('autoAsk')}</p></section>`:''}
   <section class="panel"><h3>${L('scoreTitle')}</h3>${S.teams.map((x,i)=>`<div class="mini" style="--c:${TC[i]}"><span>${esc(tn(i))}</span><b>${x.score}</b></div>`).join('')}</section>
- </div>${cardModal()}${pauseOverlay()}`;
+  <button class="pausebig" data-act="pause">${L('pause')}</button>
+ </div>${cardModal()}${confirmModal()}${pauseOverlay()}`;
 }
 
 /* ============ 操作 ============ */
@@ -905,7 +930,14 @@ function handleLocal(a){
  case'reset':if(!confirm(L('resetConfirm')))return true;return false;
  case'cfgAdd':{const el=$('#cust-'+a.stage),ty=$('#ctype-'+a.stage);a.text=el?el.value:'';a.ctype=ty?ty.value:'pts';if(!a.text.trim()){toast(L('cfgEmpty'));return true}return false}
  case'cfgDone':{const ok=[0,1,2].some(s=>S.cfg.st[s].on&&cfgAvail(s)>0);if(!ok){toast(L('cfgNeedOne'));return true}if([0,1,2].some(swapIssue)){toast(L('cfgFixFirst'));return true}return false}
- case'useCard':if(CARDS[a.card]&&CARDS[a.card].target&&a.target===undefined){ui.pick={team:a.team,card:a.card};render();return true}ui.pick=null;return false;
+ case'useAns':if(role==='client'&&!a.confirmed){ui.confirm={team:a.team,card:a.card,act:'useAns'};render();return true}return false;
+ case'confirmCancel':ui.confirm=null;render();return true;
+ case'confirmUse':{const c=ui.confirm;ui.confirm=null;if(!c){render();return true}
+  if(c.act==='useCard'&&CARDS[c.card].target){ui.pick={team:c.team,card:c.card};render();return true}
+  dispatch({type:c.act,team:c.team,card:c.card});render();return true}
+ case'useCard':
+  if(role==='client'&&a.target===undefined&&!a.confirmed){ui.confirm={team:a.team,card:a.card,act:'useCard'};render();return true}
+  if(CARDS[a.card]&&CARDS[a.card].target&&a.target===undefined){ui.pick={team:a.team,card:a.card};render();return true}ui.pick=null;return false;
  }
  return false;
 }
