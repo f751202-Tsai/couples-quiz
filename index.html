@@ -144,6 +144,15 @@ span.opt{display:inline-block;padding:.65em 1.1em;border-radius:14px;font-weight
 .mq{margin:0;text-align:center;color:#e3cfee}
 .cardbtn{display:flex;gap:12px;align-items:center;text-align:left;width:100%;background:#ff5c9a;padding:12px 14px}
 .cardbtn small{display:block;font-weight:400;opacity:.9}
+/* 手牌列：撲克牌式卡片，左右滑動 */
+.hand{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 6px 14px;margin:0 -6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.hand::-webkit-scrollbar{display:none}
+.pcard{flex:0 0 42%;max-width:190px;scroll-snap-align:start;background:#fff8ee;border-radius:12px;padding:5px;box-shadow:0 6px 16px rgba(0,0,0,.35)}
+.pcard:nth-child(3n+1){transform:rotate(-2deg)}.pcard:nth-child(3n){transform:rotate(2deg)}
+.pin{border:1.5px solid var(--k);border-radius:9px;padding:22px 8px;position:relative;min-height:175px;color:#2a1a10;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.pin .cc{position:absolute;font-size:15px;line-height:1}.pin .cc1{top:6px;left:6px}.pin .cc2{bottom:6px;right:6px;transform:rotate(180deg)}
+.pic{font-size:32px;line-height:1.1}.pnm{font-weight:900;font-size:15px;color:var(--k)}.pds{font-size:11px;color:#6a5a4a;line-height:1.45}
+.swipe{font-weight:400;color:#c9b3d6;font-size:.85em}
 .pause-ov{position:fixed;inset:0;background:rgba(10,4,16,.88);z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
 .pause-ov .pi{font-size:5em}.pause-ov h1{margin:0;font-size:2.4em}
 #toast{position:fixed;left:50%;top:18px;transform:translate(-50%,-150%);background:#ffc74d;color:#2a1600;font-weight:900;padding:12px 22px;border-radius:16px;z-index:80;transition:transform .3s;max-width:92vw;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.4)}
@@ -219,7 +228,7 @@ zh:{title:'默契大挑戰',host:'我是主持人（接投影機・計分）',re
  resetConfirm:'確定要重新開始？分數和卡片會清空（隊名保留）',pickTitle:'你要用什麼身分加入？',joinTeam:'🎮 加入 {t}',noNames:'（還沒填名字）',spectator:'👀 當觀眾',specDesc:'看跟大螢幕一樣的畫面，隨時看分數',switchBtn:'換隊／觀眾',
  setupTeam:'✏️ 設定你們這隊',teamName:'隊名',guesserLong:'🎯 猜題者（負責猜的人）',guessedLong:'💭 被猜者（被猜的人）',nameP:'名字',swapRolesBtn:'⇄ 對調猜題者／被猜者',lockHint:'同隊任何一支手機都能改；主持人按開始後就鎖定',
  introC:'介紹隊伍中，準備好筆和白板 ✍️',dealC:'🃏 你們抽到的卡片在下面！（別隊看不到）',phasePre:'🃏 卡片時間',phaseAns:'✍️ 作答中！',phaseAnsEasy:'⏳ 倒數後，指出答案！',phaseRev:'📝 公布答案，等待計分…',phasePost:'➕ 加分卡時間',
- thisQ:'本題你們隊',myCards:'我們的卡片（{n}）',autoAsk:'可以用卡的時候會自動跳出來問你；只有你們隊看得到',scoreTitle:'比分',x2:'本題 ×2',
+ thisQ:'本題你們隊',myCards:'我們的卡片（{n}）',autoAsk:'可以用卡的時候會自動跳出來問你；只有你們隊看得到',swipe:'← 左右滑動 →',scoreTitle:'比分',x2:'本題 ×2',
  useCardQ:'🃏 要使用卡片嗎？',plusQ:'🎉 答對了！要用加分卡嗎？',qLabel:'題目：',use:'使用{c}',have:'（有 {n} 張）',noThanks:'不用了 👌',
  trolledBy:'😈 由 {t} 代答',friendTag:'🤝 加猜 {o}',friendRow:'🤝 {t} 的好友卡：猜 {o} 的答案',
  howTitle:'📝 怎麼寫答案？',howG:'🎯 <b>猜題者</b>：寫下你猜「被猜者會寫的答案」',howD:'💭 <b>被猜者</b>：寫下關於自己的真實答案',howOk:'✅ 兩人寫的一樣（意思相同也算）就得分',howNo:'🤫 寫的時候不能偷看、不能討論',
@@ -247,7 +256,7 @@ fr:{title:"Le Grand Défi",host:"Je suis l'animateur (projecteur + score)",resum
  resetConfirm:"Recommencer ? Les points et les cartes seront effacés (les noms restent).",pickTitle:"Comment veux-tu participer ?",joinTeam:"🎮 Rejoindre {t}",noNames:"(pas encore de noms)",spectator:"👀 Spectateur",specDesc:"Le même écran que le projecteur, avec les scores",switchBtn:"Changer",
  setupTeam:"✏️ Configurez votre équipe",teamName:"Nom d'équipe",guesserLong:"🎯 Devineur (celui qui devine)",guessedLong:"💭 Deviné(e) (la personne à deviner)",nameP:"Prénom",swapRolesBtn:"⇄ Inverser les rôles",lockHint:"N'importe quel téléphone de l'équipe peut modifier ; verrouillé au lancement",
  introC:"Présentation des équipes, préparez stylo et ardoise ✍️",dealC:"🃏 Vos cartes sont plus bas ! (les autres ne les voient pas)",phasePre:"🃏 Moment des cartes",phaseAns:"✍️ À vous d'écrire !",phaseAnsEasy:"⏳ À la fin du compte à rebours, pointez la réponse !",phaseRev:"📝 Réponses ! En attente des points…",phasePost:"➕ Moment des bonus",
- thisQ:"Votre équipe sur cette question",myCards:"Nos cartes ({n})",autoAsk:"On te proposera les cartes au bon moment ; seule ton équipe les voit",scoreTitle:"Scores",x2:"×2 sur cette question",
+ thisQ:"Votre équipe sur cette question",myCards:"Nos cartes ({n})",autoAsk:"On te proposera les cartes au bon moment ; seule ton équipe les voit",swipe:"← glissez →",scoreTitle:"Scores",x2:"×2 sur cette question",
  useCardQ:"🃏 Utiliser une carte ?",plusQ:"🎉 Bonne réponse ! Utiliser un Bonus ?",qLabel:"Question : ",use:"Utiliser « {c} »",have:" ({n} cartes)",noThanks:"Non merci 👌",
  trolledBy:"😈 {t} répond à sa place",friendTag:"🤝 devine aussi {o}",friendRow:"🤝 Carte Ami de {t} : deviner la réponse de {o}",
  howTitle:"📝 Comment répondre ?",howG:"🎯 <b>Devineur</b> : écris la réponse que, selon toi, la personne devinée va écrire",howD:"💭 <b>Deviné(e)</b> : écris ta vraie réponse sur toi-même",howOk:"✅ Si les deux réponses correspondent (même sens), vous marquez",howNo:"🤫 Interdit de regarder ou de se concerter",
@@ -298,6 +307,7 @@ const CARDS={
  mime:{icon:'🙌',n:2,when:'preAns',stages:[1,2],zh:{n:'比手劃腳卡',d:'作答前或作答中使用，被猜者可以比手畫腳提示猜題者，不能說話、不能比數字（中等、困難題，每題每隊限 1 張）'},fr:{n:'Mime',d:"Avant ou pendant la réponse : la personne devinée peut mimer des indices, sans parler ni montrer de chiffres (Moyen, Difficile ; 1 par question et par équipe)"}},
  friend:{icon:'🤝',n:1,when:'pre',stages:[0,1,2],target:'other',zh:{n:'好友卡',d:'作答前使用，額外猜一隊的答案，猜對照該題計分給你們'},fr:{n:'Ami',d:"Avant de répondre : devinez aussi la réponse d'une autre équipe ; si c'est juste, vous marquez selon la question"}},
 };
+const CARD_COL={swapQ:'#1f8f8a',swapP:'#2f7fb3',plus:'#2f9a5c',double:'#b8860b',intel:'#7a4fc4',mime:'#c8641c',friend:'#c2477a'};
 const buildDeck=(def)=>Object.keys(CARDS).flatMap(c=>Array(Math.max(0,(def||{})[c]|0)).fill(c));
 const defaultCardCfg=()=>({on:true,n:Object.fromEntries(Object.keys(CARDS).map(c=>[c,CARDS[c].n])),deal:2,refill:[{all:0,low:1},{all:1,low:1}]});
 const TC=['#ff6fa5','#5ec8ff','#ffc74d','#7dffb0'];
@@ -818,6 +828,10 @@ function renderStage(ro){
   ${ro||!ctrl?'':`<footer class="ctrl">${ctrl}</footer>`}
  </div>${pauseOverlay()}`;
 }
+function handHTML(t){
+ if(!t.hand.length)return `<p class="muted">${L('noCards')}</p>`;
+ return `<div class="hand">${t.hand.map(c=>`<div class="pcard"><div class="pin" style="--k:${CARD_COL[c]||'#555'}"><span class="cc cc1">${CARDS[c].icon}</span><span class="cc cc2">${CARDS[c].icon}</span><div class="pic">${CARDS[c].icon}</div><div class="pnm">${cn(c)}</div><div class="pds">${cd(c)}</div></div></div>`).join('')}</div>`;
+}
 function cardModal(){
  if(!S.win||!isPlayer()||S.win.done[me])return'';
  const list=usable(me,S.win.kind),pre=S.win.kind==='pre';
@@ -862,7 +876,7 @@ function renderClient(){
   <section class="panel center-t">${mid}</section>
   <button class="pausebig" data-act="pause">${L('pause')}</button>
   <section class="panel"><div class="roles">🎯 ${L('guesser')} <b>${esc(t.a||'—')}</b>　💭 ${L('guessed')} <b>${esc(t.b||'—')}</b></div></section>
-  ${S.cardsOn?`<section class="panel"><h3>${L('myCards',{n:t.hand.length})}</h3>${t.hand.length?t.hand.map(c=>`<div class="crow"><span class="cicon">${CARDS[c].icon}</span><div style="flex:1"><b>${cn(c)}</b><div class="muted small">${cd(c)}</div></div></div>`).join(''):`<p class="muted">${L('noCards')}</p>`}<p class="muted small">${L('autoAsk')}</p></section>`:''}
+  ${S.cardsOn?`<section class="panel"><h3>${L('myCards',{n:t.hand.length})}${t.hand.length>2?` <span class="swipe">${L('swipe')}</span>`:''}</h3>${handHTML(t)}<p class="muted small">${L('autoAsk')}</p></section>`:''}
   <section class="panel"><h3>${L('scoreTitle')}</h3>${S.teams.map((x,i)=>`<div class="mini" style="--c:${TC[i]}"><span>${esc(tn(i))}</span><b>${x.score}</b></div>`).join('')}</section>
  </div>${cardModal()}${pauseOverlay()}`;
 }
@@ -890,12 +904,6 @@ function handleLocal(a){
  case'proxyClose':ui.proxy=null;ui.pick=null;render();return true;
  case'reset':if(!confirm(L('resetConfirm')))return true;return false;
  case'cfgAdd':{const el=$('#cust-'+a.stage),ty=$('#ctype-'+a.stage);a.text=el?el.value:'';a.ctype=ty?ty.value:'pts';if(!a.text.trim()){toast(L('cfgEmpty'));return true}return false}
- case'cfgCards':if(S.phase!=='config')return false;S.cfg.cards.on=!S.cfg.cards.on;break;
- case'cfgCardN':if(S.phase!=='config'||!CARDS[a.card])return false;S.cfg.cards.n[a.card]=Math.max(0,Math.min(5,(S.cfg.cards.n[a.card]|0)+a.v));break;
- case'cfgCardSet':if(S.phase!=='config'||!CARDS[a.card])return false;S.cfg.cards.n[a.card]=Math.max(0,Math.min(5,a.v|0));break;
- case'cfgCountSet':{if(S.phase!=='config')return false;S.cfg.st[a.stage].count=Math.max(1,Math.min(cfgAvail(a.stage)||1,a.v|0));break}
- case'cfgDeal':if(S.phase!=='config')return false;S.cfg.cards.deal=Math.max(0,Math.min(4,S.cfg.cards.deal+a.v));break;
- case'cfgRefill':{if(S.phase!=='config'||!['all','low'].includes(a.mode)||!(a.stage===0||a.stage===1))return false;const r=S.cfg.cards.refill[a.stage];r[a.mode]=Math.max(0,Math.min(3,r[a.mode]+a.v));break}
  case'cfgDone':{const ok=[0,1,2].some(s=>S.cfg.st[s].on&&cfgAvail(s)>0);if(!ok){toast(L('cfgNeedOne'));return true}if([0,1,2].some(swapIssue)){toast(L('cfgFixFirst'));return true}return false}
  case'useCard':if(CARDS[a.card]&&CARDS[a.card].target&&a.target===undefined){ui.pick={team:a.team,card:a.card};render();return true}ui.pick=null;return false;
  }
