@@ -113,6 +113,7 @@ span.opt{display:inline-block;padding:.65em 1.1em;border-radius:14px;font-weight
 .qrow .ck{font-weight:900;color:var(--k)}
 .qrow small{color:#c9b3d6;display:block}
 .qrow .del{margin-left:auto;color:#ff8fb3;font-weight:900}
+.warn{background:rgba(255,92,122,.15);border:1px solid #ff5c7a;border-radius:10px;padding:8px 10px;margin-top:8px;color:#ffd3dc}
 .custrow{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;align-items:center}
 .custrow input{flex:1;min-width:200px;margin:0}
 
@@ -209,12 +210,12 @@ zh:{title:'默契大挑戰',host:'我是主持人（接投影機・計分）',re
  swapWhich:'要讓哪一隊的猜題者、被猜者互換？',friendWhich:'要額外猜哪一隊的答案？',trollWhich:'要幫哪一隊作答？',self:'（自己）',cancel:'取消',
  wrong:'答錯',right:'答對 +{v}',pts:'{v} 分',qof:'第 {n} / {m} 題',stageN:'第 {n} 階段',total:'共 {n} 題',
  cfgTitle:'⚙️ 遊戲設定',cfgTeams:'隊伍數',cfgMode:'玩法',modeCouple:'💑 情侶',modeFriend:'🍻 朋友',cfgCount:'出 {n} 題',cfgAvail:'（已勾 {m} 題）',cfgAll:'全選／全不選',cfgCustomPh:'自訂題目…',cfgAdd:'＋ 新增',customTag:'自訂',
- typePts:'答對得 {v} 分',typeEach:'答對 1 個 1 分（最多 3 分）',cfgDone:'設定完成，開始邀請玩家 ▶',cfgNeedOne:'至少要有一個階段勾選而且有題目',backCfg:'⚙️ 回到設定',cfgWait:'主持人正在設定遊戲…',cfgEmpty:'請先輸入題目',
+ typePts:'答對得 {v} 分',typeEach:'答對 1 個 1 分（最多 3 分）',cfgDone:'設定完成，開始邀請玩家 ▶',cfgNeedOne:'至少要有一個階段勾選而且有題目',backCfg:'⚙️ 回到設定',cfgWait:'主持人正在設定遊戲…',cfgCards:'🃏 卡牌設定',cfgDealL:'開局每隊抽',cfgRefill:'{s}結束後：',refillAll:'每隊抽',refillLow:'最低分加抽',deckTotal:'牌庫共 {n} 張',deckShort:'⚠️ 牌庫 {n} 張，不夠開局發 {m} 張',warnSwap:'⚠️ 換題卡有 {k} 張，但這階段已勾 {m} 題、要出 {n} 題，剩下的題目不夠換。請多勾題目，或用下面的按鈕調整：',fixCount:'出題數改成 {v} 題',fixSwap:'換題卡改成 {v} 張',cfgFixFirst:'請先處理設定裡的 ⚠️ 提醒',oathGo:'宣誓完畢，開始！▶',cfgEmpty:'請先輸入題目',
  lobbyHint:'📱 各隊用手機掃 QR → 選隊伍 → 自己填隊名和名字',waitingFill:'等待填寫…',scanHint:'手機掃 QR，或打開網址輸入房號',startAll:'大家都填好了，開始！',startAnyway:'不等了，開始！',
  teamsTonight:'今晚的參賽隊伍',penBoard:'每個人拿好筆和白板 ✍️',toOath:'下一步：全場宣誓 ✋',oathTitle:'✋ 全場舉手宣誓',dealBtn:'宣誓完畢，發卡！🃏',dealTitle:'🃏 每隊抽到 2 張卡',dealHint:'卡片只有自己隊伍的手機看得到；可以用卡的時候，手機會自動跳出來問',
  startStage:'開始{s} ▶',drawFirst:'抽第 1 題 🎲',allDecided:'✅ 各隊都決定好了',allNoCard:'✅ 各隊都決定不使用卡片',cardTime:'🃏 卡片時間：各隊在手機上決定要不要用卡…',startTimer:'開始倒數 {n} 秒 ⏱',startTimerSkip:'不等了，開始倒數 {n} 秒 ⏱',endEarly:'提早結束',
  pointNow:'👉 兩人同時指出答案！',revealT:'📝 公布答案！',confirm:'確認得分 ✓',plusTime:'➕ 加分卡時間',plusHint:'答對、而且有加分卡的隊伍，在手機上決定要不要用',applyNow:'不等了，直接結算',gainTitle:'本題得分',
- next:'下一題 ▶',stageDone:'本階段結束 🏁',stageOver:'{s}結束！',drawAll:'🃏 每隊各抽 1 張卡',drawLow:'📉 {t} 分數最低，加抽 1 張',youDrew:'你們抽到：',deckEmpty:'（牌庫沒卡了）',gotoStage:'進入{s} ▶',again:'再玩一次',
+ next:'下一題 ▶',stageDone:'本階段結束 🏁',stageOver:'{s}結束！',drawAll:'🃏 每隊各抽 {n} 張卡',drawLow:'📉 {t} 分數最低，加抽 {n} 張',youDrew:'你們抽到：',deckEmpty:'（牌庫沒卡了）',gotoStage:'進入{s} ▶',again:'再玩一次',
  resetConfirm:'確定要重新開始？分數和卡片會清空（隊名保留）',pickTitle:'你要用什麼身分加入？',joinTeam:'🎮 加入 {t}',noNames:'（還沒填名字）',spectator:'👀 當觀眾',specDesc:'看跟大螢幕一樣的畫面，隨時看分數',switchBtn:'換隊／觀眾',
  setupTeam:'✏️ 設定你們這隊',teamName:'隊名',guesserLong:'🎯 猜題者（負責猜的人）',guessedLong:'💭 被猜者（被猜的人）',nameP:'名字',swapRolesBtn:'⇄ 對調猜題者／被猜者',lockHint:'同隊任何一支手機都能改；主持人按開始後就鎖定',
  introC:'介紹隊伍中，準備好筆和白板 ✍️',dealC:'🃏 你們抽到的卡片在下面！（別隊看不到）',phasePre:'🃏 卡片時間',phaseAns:'✍️ 作答中！',phaseAnsEasy:'⏳ 倒數後，指出答案！',phaseRev:'📝 公布答案，等待計分…',phasePost:'➕ 加分卡時間',
@@ -223,7 +224,7 @@ zh:{title:'默契大挑戰',host:'我是主持人（接投影機・計分）',re
  trolledBy:'😈 由 {t} 代答',friendTag:'🤝 加猜 {o}',friendRow:'🤝 {t} 的好友卡：猜 {o} 的答案',
  howTitle:'📝 怎麼寫答案？',howG:'🎯 <b>猜題者</b>：寫下你猜「被猜者會寫的答案」',howD:'💭 <b>被猜者</b>：寫下關於自己的真實答案',howOk:'✅ 兩人寫的一樣（意思相同也算）就得分',howNo:'🤫 寫的時候不能偷看、不能討論',
  roleMini:'🎯 {a} 寫「猜 {b} 的答案」・💭 {b} 寫「自己的答案」',roleMiniG:'🎯 猜題者寫「猜的答案」・💭 被猜者寫「自己的答案」',
- notConn:'還沒連上主持人…',connecting:'連線中…',roomNotFound:'找不到房間 {c}，重試中…',connErr:'連線錯誤（{e}），重試中…',disconnected:'斷線了，重新連線中…',peerFail:'連線元件載入失敗，請確認網路',idBusy:'房號暫時被占用，重試中…',
+ notConn:'還沒連上主持人…',connecting:'連線中…',roomNotFound:'找不到房間 {c}：主持人的房間還沒開好，或主持人畫面被關掉了。持續重試中…',roomOk:'✅ 房間已開好，可以掃 QR 加入了',roomWait:'⏳ 房間正在連線伺服器…（{s} 秒）超過 30 秒請重新整理，或換個網路',connErr:'連線錯誤（{e}），重試中…',disconnected:'斷線了，重新連線中…',peerFail:'連線元件載入失敗，請確認網路',idBusy:'房號暫時被占用，重試中…',
  drawing:'🎲 抽題中…',swapping:'🔄 換題！',an_swapP:'🔀 {t} 換人！',an_x2:'{t} 得分翻倍！',an_intel:'🕵️ 情報卡！',an_intelSub:'{t} 可以問被猜者答案的第一個字',
  winOne:'🎉 恭喜 {n} 獲勝！🎉',winTie:'🎉 恭喜 {n} 並列冠軍！🎉',allTie:'🤝 全部平手！',drawFace:'🖊️ 可以在 {n} 臉上畫畫！',allDraw:'全場互相畫一筆 😂',and:'、',
  ev_use:'{i} {t} 使用了「{c}」',ev_swapQ:'！題目換掉了',ev_swapPself:'，自己隊伍角色互換！',ev_swapP:'，{o} 的猜題者和被猜者互換！',ev_double:'，這題得分 ×2！',ev_intel:'，可以問被猜者答案的第一個字！',ev_plus:'，再 +1 分！',
@@ -237,12 +238,12 @@ fr:{title:"Le Grand Défi",host:"Je suis l'animateur (projecteur + score)",resum
  swapWhich:"Quelle équipe doit inverser devineur et deviné(e) ?",friendWhich:"Deviner aussi la réponse de quelle équipe ?",trollWhich:"Répondre à la place de quelle équipe ?",self:" (nous)",cancel:"Annuler",
  wrong:"Faux",right:"Juste +{v}",pts:"{v} pt",qof:"Question {n} / {m}",stageN:"Manche {n}",total:"{n} questions",
  cfgTitle:"⚙️ Réglages",cfgTeams:"Équipes",cfgMode:"Mode",modeCouple:"💑 Couples",modeFriend:"🍻 Amis",cfgCount:"{n} questions",cfgAvail:" (sur {m} cochées)",cfgAll:"Tout / rien",cfgCustomPh:"Question personnalisée…",cfgAdd:"＋ Ajouter",customTag:"perso",
- typePts:"Juste : {v} pts",typeEach:"1 pt par réponse juste (max 3)",cfgDone:"Terminé, inviter les joueurs ▶",cfgNeedOne:"Il faut au moins une manche cochée avec des questions",backCfg:"⚙️ Réglages",cfgWait:"L'animateur prépare la partie…",cfgEmpty:"Écris d'abord la question",
+ typePts:"Juste : {v} pts",typeEach:"1 pt par réponse juste (max 3)",cfgDone:"Terminé, inviter les joueurs ▶",cfgNeedOne:"Il faut au moins une manche cochée avec des questions",backCfg:"⚙️ Réglages",cfgWait:"L'animateur prépare la partie…",cfgCards:"🃏 Cartes",cfgDealL:"Cartes de départ par équipe",cfgRefill:"Après « {s} » :",refillAll:"chaque équipe pioche",refillLow:"la dernière pioche en plus",deckTotal:"{n} cartes au total",deckShort:"⚠️ {n} cartes : pas assez pour en distribuer {m}",warnSwap:"⚠️ {k} carte(s) Changement, mais {m} questions cochées pour {n} posées : pas assez de questions de réserve. Cochez-en plus ou ajustez :",fixCount:"Poser {v} questions",fixSwap:"Mettre {v} carte(s) Changement",cfgFixFirst:"Corrigez d'abord les ⚠️ dans les réglages",oathGo:"Serment prêté, on commence ! ▶",cfgEmpty:"Écris d'abord la question",
  lobbyHint:"📱 Chaque équipe scanne le QR → choisit son équipe → entre son nom d'équipe et ses prénoms",waitingFill:"En attente…",scanHint:"Scannez le QR ou ouvrez le site et entrez le numéro",startAll:"Tout le monde est prêt, on commence !",startAnyway:"On commence quand même !",
  teamsTonight:"Les équipes de ce soir",penBoard:"Chacun prend un stylo et une ardoise ✍️",toOath:"Suite : le serment ✋",oathTitle:"✋ Levez la main et jurez",dealBtn:"Serment prêté, on distribue ! 🃏",dealTitle:"🃏 Chaque équipe reçoit 2 cartes",dealHint:"Seul le téléphone de votre équipe voit vos cartes ; il vous les proposera au bon moment",
  startStage:"Commencer : {s} ▶",drawFirst:"Tirer la 1re question 🎲",allDecided:"✅ Toutes les équipes sont prêtes",allNoCard:"✅ Aucune équipe n'utilise de carte",cardTime:"🃏 Moment des cartes : chaque équipe décide sur son téléphone…",startTimer:"Lancer le chrono : {n} s ⏱",startTimerSkip:"Sans attendre : chrono {n} s ⏱",endEarly:"Terminer",
  pointNow:"👉 Pointez la réponse en même temps !",revealT:"📝 Montrez vos réponses !",confirm:"Valider les points ✓",plusTime:"➕ Moment des bonus",plusHint:"Les équipes qui ont juste et ont une carte Bonus décident sur leur téléphone",applyNow:"Sans attendre, on compte",gainTitle:"Points de cette question",
- next:"Question suivante ▶",stageDone:"Fin de la manche 🏁",stageOver:"Manche « {s} » terminée !",drawAll:"🃏 Chaque équipe pioche 1 carte",drawLow:"📉 {t} est dernière : 1 carte en plus",youDrew:"Vous avez pioché :",deckEmpty:"(plus de cartes)",gotoStage:"Passer à : {s} ▶",again:"Rejouer",
+ next:"Question suivante ▶",stageDone:"Fin de la manche 🏁",stageOver:"Manche « {s} » terminée !",drawAll:"🃏 Chaque équipe pioche {n} carte(s)",drawLow:"📉 {t} est dernière : {n} carte(s) en plus",youDrew:"Vous avez pioché :",deckEmpty:"(plus de cartes)",gotoStage:"Passer à : {s} ▶",again:"Rejouer",
  resetConfirm:"Recommencer ? Les points et les cartes seront effacés (les noms restent).",pickTitle:"Comment veux-tu participer ?",joinTeam:"🎮 Rejoindre {t}",noNames:"(pas encore de noms)",spectator:"👀 Spectateur",specDesc:"Le même écran que le projecteur, avec les scores",switchBtn:"Changer",
  setupTeam:"✏️ Configurez votre équipe",teamName:"Nom d'équipe",guesserLong:"🎯 Devineur (celui qui devine)",guessedLong:"💭 Deviné(e) (la personne à deviner)",nameP:"Prénom",swapRolesBtn:"⇄ Inverser les rôles",lockHint:"N'importe quel téléphone de l'équipe peut modifier ; verrouillé au lancement",
  introC:"Présentation des équipes, préparez stylo et ardoise ✍️",dealC:"🃏 Vos cartes sont plus bas ! (les autres ne les voient pas)",phasePre:"🃏 Moment des cartes",phaseAns:"✍️ À vous d'écrire !",phaseAnsEasy:"⏳ À la fin du compte à rebours, pointez la réponse !",phaseRev:"📝 Réponses ! En attente des points…",phasePost:"➕ Moment des bonus",
@@ -251,7 +252,7 @@ fr:{title:"Le Grand Défi",host:"Je suis l'animateur (projecteur + score)",resum
  trolledBy:"😈 {t} répond à sa place",friendTag:"🤝 devine aussi {o}",friendRow:"🤝 Carte Ami de {t} : deviner la réponse de {o}",
  howTitle:"📝 Comment répondre ?",howG:"🎯 <b>Devineur</b> : écris la réponse que, selon toi, la personne devinée va écrire",howD:"💭 <b>Deviné(e)</b> : écris ta vraie réponse sur toi-même",howOk:"✅ Si les deux réponses correspondent (même sens), vous marquez",howNo:"🤫 Interdit de regarder ou de se concerter",
  roleMini:"🎯 {a} devine la réponse de {b} · 💭 {b} écrit sa propre réponse",roleMiniG:"🎯 Devineur : sa supposition · 💭 Deviné(e) : sa vraie réponse",
- notConn:"Pas encore connecté à l'animateur…",connecting:"Connexion…",roomNotFound:"Salle {c} introuvable, nouvel essai…",connErr:"Erreur de connexion ({e}), nouvel essai…",disconnected:"Déconnecté, reconnexion…",peerFail:"Impossible de charger la connexion, vérifiez le réseau",idBusy:"Salle occupée, nouvel essai…",
+ notConn:"Pas encore connecté à l'animateur…",connecting:"Connexion…",roomNotFound:"Salle {c} introuvable : l'animateur n'est pas encore prêt ou son écran est fermé. Nouvel essai…",roomOk:"✅ Salle prête, scannez le QR !",roomWait:"⏳ Connexion de la salle au serveur… ({s} s). Au-delà de 30 s, rechargez ou changez de réseau",connErr:"Erreur de connexion ({e}), nouvel essai…",disconnected:"Déconnecté, reconnexion…",peerFail:"Impossible de charger la connexion, vérifiez le réseau",idBusy:"Salle occupée, nouvel essai…",
  drawing:"🎲 Tirage…",swapping:"🔄 Nouvelle question !",an_swapP:"🔀 {t} échange les rôles !",an_x2:"Points doublés pour {t} !",an_intel:"🕵️ Indice !",an_intelSub:"{t} peut demander la première lettre de la réponse",
  winOne:"🎉 Bravo {n}, vous avez gagné ! 🎉",winTie:"🎉 Bravo {n}, ex æquo ! 🎉",allTie:"🤝 Égalité parfaite !",drawFace:"🖊️ Vous pouvez dessiner sur le visage de {n} !",allDraw:"Tout le monde dessine sur tout le monde 😂",and:" et ",
  ev_use:"{i} {t} utilise « {c} »",ev_swapQ:" : nouvelle question !",ev_swapPself:" : rôles inversés dans l'équipe !",ev_swapP:" : {o} inverse ses rôles !",ev_double:" : points ×2 !",ev_intel:" : vous pouvez demander la première lettre de la réponse !",ev_plus:" : +1 point !",
@@ -296,12 +297,12 @@ const CARDS={
  intel:{icon:'🕵️',n:2,when:'preAns',stages:[1,2],zh:{n:'情報卡',d:'作答前或作答中使用，可以問被猜者答案的第一個字（中等、困難題，每題每隊限 1 張）'},fr:{n:'Indice',d:"Avant ou pendant la réponse : demande la première lettre de la réponse à la personne devinée (Moyen, Difficile ; 1 par question et par équipe)"}},
  mime:{icon:'🙌',n:2,when:'preAns',stages:[1,2],zh:{n:'比手劃腳卡',d:'作答前或作答中使用，被猜者可以比手畫腳提示猜題者，不能說話、不能比數字（中等、困難題，每題每隊限 1 張）'},fr:{n:'Mime',d:"Avant ou pendant la réponse : la personne devinée peut mimer des indices, sans parler ni montrer de chiffres (Moyen, Difficile ; 1 par question et par équipe)"}},
  friend:{icon:'🤝',n:1,when:'pre',stages:[0,1,2],target:'other',zh:{n:'好友卡',d:'作答前使用，額外猜一隊的答案，猜對照該題計分給你們'},fr:{n:'Ami',d:"Avant de répondre : devinez aussi la réponse d'une autre équipe ; si c'est juste, vous marquez selon la question"}},
- troll:{icon:'😈',n:1,when:'pre',stages:[1,2],target:'other',zh:{n:'搗亂卡',d:'作答前使用，由你們幫別隊作答，答對分數還是算別隊的（中等、困難題）'},fr:{n:'Sabotage',d:"Avant de répondre : vous répondez à la place d'une autre équipe ; si c'est juste, les points restent à cette équipe (Moyen, Difficile)"}},
 };
-const buildDeck=()=>Object.keys(CARDS).flatMap(c=>Array(CARDS[c].n).fill(c));
+const buildDeck=(def)=>Object.keys(CARDS).flatMap(c=>Array(Math.max(0,(def||{})[c]|0)).fill(c));
+const defaultCardCfg=()=>({on:true,n:Object.fromEntries(Object.keys(CARDS).map(c=>[c,CARDS[c].n])),deal:2,refill:[{all:0,low:1},{all:1,low:1}]});
 const TC=['#ff6fa5','#5ec8ff','#ffc74d','#7dffb0'];
 const CLIENT_ACTS=['pause','resume','useCard','useAns','done','setField','swapRoles'];
-const NO_HIST=['pause','resume','undo','setField','cfgTeams','cfgMode','cfgStage','cfgCount','cfgSel','cfgAll','cfgAdd','cfgDel'];
+const NO_HIST=['pause','resume','undo','setField','cfgCards','cfgCardN','cfgCardSet','cfgCountSet','cfgDeal','cfgRefill','cfgTeams','cfgMode','cfgStage','cfgCount','cfgSel','cfgAll','cfgAdd','cfgDel'];
 const sn=s=>STAGE_INFO[s][LANG].n, sr=s=>STAGE_INFO[s][LANG].r, qt=q=>(LANG==='fr'&&q.fr)?q.fr:q.zh;
 const cn=c=>CARDS[c][LANG].n, cd=c=>CARDS[c][LANG].d;
 
@@ -318,9 +319,9 @@ const NT=()=>S.teams.length;
 
 const perQ=t=>Object.assign(t,{base:0,bonus:0,double:false,intelUsed:false,mimeUsed:false,friend:null,friendBase:0,trolledBy:null,gained:null});
 const mkTeam=()=>perQ({name:'',a:'',b:'',score:0,hand:[]});
-const defaultCfg=()=>({teams:3,mode:'couple',st:[0,1,2].map(s=>({on:true,count:STAGE_INFO[s].count,sel:BANKS.couple[s].map(()=>true),custom:[]}))});
+const defaultCfg=()=>({cards:defaultCardCfg(),teams:3,mode:'couple',st:[0,1,2].map(s=>({on:true,count:STAGE_INFO[s].count,sel:BANKS.couple[s].map(()=>true),custom:[]}))});
 function newState(){return{
- phase:'config',cfg:defaultCfg(),teams:[mkTeam(),mkTeam(),mkTeam()],deck:[],pool:[[],[],[]],order:[],si:0,counts:[6,5,5],
+ phase:'config',cfg:defaultCfg(),cardsOn:true,deckDef:null,dealN:2,refill:[{all:0,low:1},{all:1,low:1}],teams:[mkTeam(),mkTeam(),mkTeam()],deck:[],pool:[[],[],[]],order:[],si:0,counts:[6,5,5],
  stage:0,qNum:0,used:[[],[],[]],q:null,win:null,timer:{dur:0,left:0,running:false},paused:false,event:null,anim:null,draws:null}}
 
 const tn=i=>S.teams[i].name||L('team'+i);
@@ -331,6 +332,14 @@ const poolLeft=()=>(S.pool[S.stage]||[]).length-S.used[S.stage].length;
 function qNote(q=curQ()){if(!q)return'';if(S.stage===0)return L('noteEasy');if(q.each)return L('noteEach',{m:q.max});if(q.multi)return L('noteMulti');return L('noteRight',{v:q.pts})}
 function scoreOpts(){const q=curQ();if(!q)return[0,1];if(q.each)return Array.from({length:q.max+1},(_,i)=>i);return[0,q.pts||1]}
 const cfgAvail=s=>S.cfg.st[s].sel.filter(Boolean).length+S.cfg.st[s].custom.length;
+const deckTotal=()=>Object.values(S.cfg.cards.n).reduce((a,b)=>a+b,0);
+/* 防呆：已勾題數 − 出題數 要 ≥ 換題卡張數，否則換題卡可能換不到新題 */
+function swapIssue(s){
+ const c=S.cfg,st=c.st[s];if(!st.on)return null;
+ const av=cfgAvail(s);if(!av)return null;
+ const k=c.cards.on?c.cards.n.swapQ:0,n=Math.min(st.count,av);
+ return av-n>=k?null:{av,n,k};
+}
 
 function usable(i,kind){
  const t=S.teams[i],out=[];
@@ -346,7 +355,6 @@ function usable(i,kind){
   if(c==='intel'&&t.intelUsed)continue;
   if(c==='mime'&&t.mimeUsed)continue;
   if(c==='friend'&&(t.friend!=null||NT()<2))continue;
-  if(c==='troll'&&!S.teams.some((x,j)=>j!==i&&x.trolledBy==null))continue;
   if(c==='plus'&&!(t.base>0||t.friendBase>0))continue;
   out.push(c);
  }
@@ -384,7 +392,6 @@ function cardEffect(team,card,target){
  if(C.target){
   if(!(target>=0&&target<NT()))return false;
   if(C.target==='other'&&target===team)return false;
-  if(card==='troll'&&S.teams[target].trolledBy!=null)return false;
  }
  t.hand.splice(t.hand.indexOf(card),1);
  switch(card){
@@ -394,7 +401,6 @@ function cardEffect(team,card,target){
   case'intel':t.intelUsed=true;S.anim={id:newId(),k:'intel',team};break;
   case'mime':t.mimeUsed=true;break;
   case'friend':t.friend=target;break;
-  case'troll':S.teams[target].trolledBy=team;break;
   case'plus':t.bonus+=1;break;
  }
  event({k:'card',c:card,team,target});
@@ -402,9 +408,10 @@ function cardEffect(team,card,target){
 }
 function stageEndDraws(){
  const draws=[],give=(i,why)=>{const c=S.deck.pop()||null;if(c)S.teams[i].hand.push(c);draws.push({team:i,card:c,why})};
- if(S.stage===1)S.teams.forEach((_,i)=>give(i,'all'));
+ const r=S.cardsOn?(S.refill[S.stage]||{all:0,low:0}):{all:0,low:0};
+ for(let k=0;k<r.all;k++)S.teams.forEach((_,i)=>give(i,'all'));
  const mn=Math.min(...S.teams.map(t=>t.score));
- S.teams.forEach((t,i)=>{if(t.score===mn)give(i,'low')});
+ for(let k=0;k<r.low;k++)S.teams.forEach((t,i)=>{if(t.score===mn)give(i,'low')});
  S.draws=draws;
 }
 function reduce(a){
@@ -420,6 +427,12 @@ function reduce(a){
  case'cfgAdd':{if(S.phase!=='config')return false;const text=String(a.text||'').trim().slice(0,120);if(!text)return false;const s=a.stage;
   const q=s===0?{pts:1}:a.ctype==='each'?{each:true,max:3}:{pts:s===1?2:3};S.cfg.st[s].custom.push({zh:text,fr:text,custom:true,...q});break}
  case'cfgDel':{if(S.phase!=='config')return false;S.cfg.st[a.stage].custom.splice(a.qi,1);const c=S.cfg.st[a.stage];c.count=Math.max(1,Math.min(c.count,cfgAvail(a.stage)||1));break}
+ case'cfgCards':if(S.phase!=='config')return false;S.cfg.cards.on=!S.cfg.cards.on;break;
+ case'cfgCardN':if(S.phase!=='config'||!CARDS[a.card])return false;S.cfg.cards.n[a.card]=Math.max(0,Math.min(5,(S.cfg.cards.n[a.card]|0)+a.v));break;
+ case'cfgCardSet':if(S.phase!=='config'||!CARDS[a.card])return false;S.cfg.cards.n[a.card]=Math.max(0,Math.min(5,a.v|0));break;
+ case'cfgCountSet':{if(S.phase!=='config')return false;S.cfg.st[a.stage].count=Math.max(1,Math.min(cfgAvail(a.stage)||1,a.v|0));break}
+ case'cfgDeal':if(S.phase!=='config')return false;S.cfg.cards.deal=Math.max(0,Math.min(4,S.cfg.cards.deal+a.v));break;
+ case'cfgRefill':{if(S.phase!=='config'||!['all','low'].includes(a.mode)||!(a.stage===0||a.stage===1))return false;const r=S.cfg.cards.refill[a.stage];r[a.mode]=Math.max(0,Math.min(3,r[a.mode]+a.v));break}
  case'cfgDone':{
   if(S.phase!=='config')return false;
   const mode=S.cfg.mode;
@@ -427,6 +440,7 @@ function reduce(a){
   S.order=[0,1,2].filter(s=>S.cfg.st[s].on&&S.pool[s].length>0);
   if(!S.order.length)return false;
   S.counts=[0,1,2].map(s=>Math.max(1,Math.min(S.cfg.st[s].count,S.pool[s].length)));
+  const k=S.cfg.cards;S.cardsOn=k.on&&deckTotal()>0;S.deckDef={...k.n};S.dealN=k.deal;S.refill=k.refill.map(x=>({...x}));
   S.si=0;S.stage=S.order[0];S.phase='lobby';break}
  case'backCfg':if(S.phase!=='lobby')return false;S.phase='config';break;
  /* 大廳 */
@@ -434,7 +448,7 @@ function reduce(a){
  case'swapRoles':{if(S.phase!=='lobby')return false;const t=S.teams[a.team];[t.a,t.b]=[t.b,t.a];break}
  case'start':if(S.phase!=='lobby')return false;S.phase='intro';break;
  case'oath':S.phase='oath';break;
- case'deal':S.deck=shuffle(buildDeck());S.teams.forEach(t=>{t.hand=[S.deck.pop(),S.deck.pop()]});S.phase='deal';break;
+ case'deal':if(!S.cardsOn){S.phase='stageIntro';break}S.deck=shuffle(buildDeck(S.deckDef));S.teams.forEach(t=>{t.hand=[];for(let k=0;k<S.dealN;k++){const c=S.deck.pop();if(c)t.hand.push(c)}});S.phase='deal';break;
  case'stageIntro':S.phase='stageIntro';break;
  case'draw':if(S.phase!=='stageIntro')return false;drawQuestion();break;
  /* 卡片 */
@@ -499,7 +513,7 @@ function cleanState(s){
  let an=null;
  if(s.anim&&typeof s.anim==='object'){const A=s.anim,k=['draw','swap','swapP','x2','intel'].includes(A.k)?A.k:null;
   if(k){const st=int(A.stage,0,2);an={id:str(A.id,40),k,stage:st,q:int(A.q,0,Math.max(0,pool[st].length-1)),team:int(A.team,0,n-1),teams:(Array.isArray(A.teams)?A.teams:[]).slice(0,4).map(x=>int(x,0,n-1))}}}
- return{phase,teams,deck:[],pool,order:(Array.isArray(s.order)?s.order:[]).slice(0,3).map(x=>int(x,0,2)),si:int(s.si,0,2),counts:[0,1,2].map(k=>int((s.counts||[])[k],0,40)),
+ return{cardsOn:!!s.cardsOn,phase,teams,deck:[],pool,order:(Array.isArray(s.order)?s.order:[]).slice(0,3).map(x=>int(x,0,2)),si:int(s.si,0,2),counts:[0,1,2].map(k=>int((s.counts||[])[k],0,40)),
   stage,qNum:int(s.qNum,0,40),used:[[],[],[]],q,win:w,timer:{dur:0,left:Math.max(0,num(s.timer&&s.timer.left)),running:false},paused:!!s.paused,event:e,anim:an,
   draws:Array.isArray(s.draws)?s.draws.slice(0,12).map(d=>({team:int(d&&d.team,0,n-1),card:card(d&&d.card),why:d&&d.why==='all'?'all':'low'})):null};
 }
@@ -508,13 +522,18 @@ function cleanState(s){
 function broadcast(){const m={t:'state',s:S};conns.forEach(c=>{try{if(c.open)c.send(m)}catch(e){}})}
 function tickBroadcast(){conns.forEach(c=>{try{if(c.open)c.send({t:'tick',left:S.timer.left})}catch(e){}})}
 function setNet(k,p){netMsg=k?{k,p}:null;updateNet()}
+let netGen=0,netSince=0,watchT;
 function hostNet(){
  if(!window.Peer){setNet('peerFail');return}
+ const gen=++netGen;
  try{if(peer)peer.destroy()}catch(e){}
- peerOk=false;conns=[];
- peer=new Peer('cplq-'+code);
- peer.on('open',()=>{peerOk=true;setNet(null)});
- peer.on('connection',c=>{
+ peerOk=false;conns=[];netSince=Date.now();updateNet();
+ const p=peer=new Peer('cplq-'+code);
+ const live=()=>gen===netGen;
+ clearTimeout(watchT);watchT=setTimeout(()=>{if(live()&&!peerOk)hostNet()},12000);
+ p.on('open',()=>{if(!live())return;peerOk=true;clearTimeout(watchT);setNet(null)});
+ p.on('connection',c=>{
+  if(!live())return;
   c.on('open',()=>{conns.push(c);try{c.send({t:'state',s:S})}catch(e){}updateNet()});
   c.on('data',d=>{
    if(!d||d.t!=='act'||!d.a||typeof d.a!=='object'||typeof d.a.type!=='string')return;
@@ -524,14 +543,18 @@ function hostNet(){
   c.on('close',()=>{conns=conns.filter(x=>x!==c);updateNet()});
   c.on('error',()=>{});
  });
- peer.on('error',e=>{
-  if(e.type==='unavailable-id'){setNet('idBusy');setTimeout(hostNet,4000);return}
+ p.on('error',e=>{
+  if(!live())return;
+  if(e.type==='unavailable-id'){setNet('idBusy');setTimeout(()=>{if(live())hostNet()},4000);return}
   if(e.type==='peer-unavailable')return;
   peerOk=false;setNet('connErr',{e:e.type});
-  setTimeout(()=>{try{peer.destroyed?hostNet():peer.reconnect()}catch(_){hostNet()}},3000);
+  setTimeout(()=>{if(live())hostNet()},3000);
  });
- peer.on('disconnected',()=>{peerOk=false;updateNet();setTimeout(()=>{try{if(!peer.destroyed)peer.reconnect()}catch(e){}},2000)});
+ p.on('disconnected',()=>{if(!live())return;peerOk=false;updateNet();setTimeout(()=>{if(!live())return;try{p.reconnect()}catch(e){hostNet()}},1500)});
 }
+/* 主持人畫面回到前景時，若連線斷了就立刻重連 */
+document.addEventListener('visibilitychange',()=>{if(role==='host'&&document.visibilityState==='visible'&&!peerOk)hostNet()});
+setInterval(()=>{if(role==='host'&&!peerOk)updateNet()},1000);
 let retryT;
 function startClient(c){
  role='client';code=c;
@@ -566,7 +589,12 @@ function netBadge(){
  if(role==='host')return `${peerOk?'🟢':'🟡'} ${L('room')} <b>${code}</b> · 📱 ${L('phones',{n:conns.length})}${extra}`;
  return conn&&conn.open?'🟢':'🔴 '+esc(netMsg?L(netMsg.k,netMsg.p):L('notConn'));
 }
-function updateNet(){const el=$('#net');if(el)el.innerHTML=netBadge()}
+function roomStat(){
+ if(role!=='host')return'';
+ if(peerOk)return `<span style="color:#7dffb0">${L('roomOk')}</span>`;
+ return `<span style="color:#ffd36b">${L('roomWait',{s:Math.round((Date.now()-netSince)/1000)})}</span>`;
+}
+function updateNet(){const el=$('#net');if(el)el.innerHTML=netBadge();const r=$('#roomstat');if(r)r.innerHTML=roomStat()}
 const joinURL=()=>location.origin+location.pathname+'?join='+code;
 function qrSVG(text){try{const q=qrcode(0,'M');q.addData(text);q.make();return q.createSvgTag({cellSize:4,margin:1,scalable:true})}catch(e){return'<div style="color:#000;padding:40px 10px">QR</div>'}}
 
@@ -651,7 +679,6 @@ function teamTags(i){
  let s='';
  if(t.double)s+=`<span class="tag x2">${L('x2')}</span>`;
  if(t.friend!=null&&S.teams[t.friend])s+=`<span class="tag">${L('friendTag',{o:esc(tn(t.friend))})}</span>`;
- if(t.trolledBy!=null&&S.teams[t.trolledBy])s+=`<span class="tag">${L('trolledBy',{t:esc(tn(t.trolledBy))})}</span>`;
  return s;
 }
 /* 投影／觀眾看到的隊伍卡：不顯示卡片內容，只顯示張數 */
@@ -670,13 +697,13 @@ function teamCardHTML(i,ro){
  return `<div class="team" style="--c:${TC[i]}">
   <div class="trow"><div class="tname">${esc(tn(i))}</div><div class="score">${t.score}</div></div>
   <div class="roles">🎯 ${L('guesser')} ${esc(t.a||'—')}　💭 ${L('guessed')} ${esc(t.b||'—')}</div>
-  <div class="muted small">${t.hand.length?L('handCount',{n:t.hand.length}):L('noCards')}</div>
+  ${S.cardsOn?`<div class="muted small">${t.hand.length?L('handCount',{n:t.hand.length}):L('noCards')}</div>`:''}
   ${teamTags(i)}${status}${proxy}
  </div>`;
 }
 function targetChooser(i,c,small){
- const opts=S.teams.map((_,j)=>j).filter(j=>c==='swapP'||(j!==i&&!(c==='troll'&&S.teams[j].trolledBy!=null)));
- const q=c==='swapP'?'swapWhich':c==='friend'?'friendWhich':'trollWhich';
+ const opts=S.teams.map((_,j)=>j).filter(j=>c==='swapP'||j!==i);
+ const q=c==='swapP'?'swapWhich':'friendWhich';
  return `<div class="targets"><div class="muted small" style="width:100%">${CARDS[c].icon} ${L(q)}</div>${opts.map(j=>`<button class="${small?'sm':''}" style="background:${TC[j]};color:#1a0f22" data-act="useCard" data-team="${i}" data-card="${c}" data-target="${j}">${esc(tn(j))}${j===i?L('self'):''}</button>`).join('')}<button class="${small?'sm':''} ghost" data-act="pickCancel">${L('cancel')}</button></div>`;
 }
 function scoringHTML(ro){
@@ -708,8 +735,9 @@ function finalHTML(){
 /* 公開畫面只說誰抽了幾張，不說抽到什麼 */
 function drawsPublic(){
  const d=S.draws||[];let h='';
- if(d.some(x=>x.why==='all'))h+=`<p class="rule">${L('drawAll')}</p>`;
- d.filter(x=>x.why==='low').forEach(x=>h+=`<p class="rule">${L('drawLow',{t:esc(tn(x.team))})}</p>`);
+ const nAll=d.filter(x=>x.why==='all'&&x.team===0).length;
+ if(nAll)h+=`<p class="rule">${L('drawAll',{n:nAll})}</p>`;
+ S.teams.forEach((_,i)=>{const n=d.filter(x=>x.why==='low'&&x.team===i).length;if(n)h+=`<p class="rule">${L('drawLow',{t:esc(tn(i)),n})}</p>`});
  return h;
 }
 const howtoHTML=()=>`<div class="howto"><h3>${L('howTitle')}</h3>${L('howG')}<br>${L('howD')}<br>${L('howOk')}<br>${L('howNo')}</div>`;
@@ -728,8 +756,24 @@ function configHTML(){
     <div class="stepper"><button class="sm ghost" data-act="cfgCount" data-stage="${s}" data-v="-1">−</button><b>${L('cfgCount',{n:Math.min(st.count,av)})}</b><button class="sm ghost" data-act="cfgCount" data-stage="${s}" data-v="1">＋</button><span class="muted small">${L('cfgAvail',{m:av})}</span></div></div>
    <div class="qlist">${bank[s].map((q,i)=>`<button class="qrow ${st.sel[i]?'on':''}" data-act="cfgSel" data-stage="${s}" data-qi="${i}"><span class="ck">${st.sel[i]?'☑':'☐'}</span><span>${esc(qt(q))}<small>${noteFor(s,q)}</small></span></button>`).join('')}
     ${st.custom.map((q,i)=>`<div class="qrow on"><span class="ck">★</span><span>${esc(q.zh)}<small>${L('customTag')} · ${noteFor(s,q)}</small></span><button class="sm ghost del" data-act="cfgDel" data-stage="${s}" data-qi="${i}">✕</button></div>`).join('')}</div>
+   ${(()=>{const w=swapIssue(s);if(!w)return'';return `<div class="warn">${L('warnSwap',{k:w.k,m:w.av,n:w.n})}<div class="proxy">${w.av-w.k>=1?`<button class="sm" data-act="cfgCountSet" data-stage="${s}" data-v="${w.av-w.k}">${L('fixCount',{v:w.av-w.k})}</button>`:''}<button class="sm" data-act="cfgCardSet" data-card="swapQ" data-v="${w.av-w.n}">${L('fixSwap',{v:w.av-w.n})}</button></div></div>`})()}
    <div class="custrow"><input id="cust-${s}" maxlength="120" placeholder="${L('cfgCustomPh')}">${s>0?`<select class="ct" id="ctype-${s}"><option value="pts">${L('typePts',{v:s===1?2:3})}</option><option value="each">${L('typeEach')}</option></select>`:''}<button class="sm" data-act="cfgAdd" data-stage="${s}">${L('cfgAdd')}</button></div>
   </div>`}).join('')}
+  ${cardCfgHTML()}
+ </div>`;
+}
+const stepper=(act,attrs,val,unit=v=>v)=>`<div class="stepper"><button class="sm ghost" data-act="${act}" ${attrs} data-v="-1">−</button><b>${unit(val)}</b><button class="sm ghost" data-act="${act}" ${attrs} data-v="1">＋</button></div>`;
+function cardCfgHTML(){
+ const k=S.cfg.cards,tot=deckTotal(),need=S.cfg.teams*k.deal;
+ const unit=v=>LANG==='fr'?String(v):v+' 張';
+ return `<div class="cfgstage ${k.on?'':'off'}" style="--k:#ff6fa5">
+  <div class="cfghead"><button class="seg ${k.on?'on':''}" data-act="cfgCards">${k.on?'☑':'☐'}</button><span class="sname">${L('cfgCards')}</span><span class="muted small" style="margin-left:auto">${L('deckTotal',{n:tot})}</span></div>
+  <div class="qlist">${Object.keys(CARDS).map(c=>`<div class="qrow on"><span class="ck">${CARDS[c].icon}</span><span style="flex:1">${cn(c)}<small>${cd(c)}</small></span>${stepper('cfgCardN',`data-card="${c}"`,k.n[c],unit)}</div>`).join('')}</div>
+  <div class="qlist">
+   <div class="qrow on"><span style="flex:1"><b>${L('cfgDealL')}</b></span>${stepper('cfgDeal','',k.deal,unit)}</div>
+   ${[0,1].map(s=>`<div class="qrow on" style="flex-wrap:wrap"><span style="flex:1;min-width:8em"><b>${L('cfgRefill',{s:sn(s)})}</b></span><span class="muted small">${L('refillAll')}</span>${stepper('cfgRefill',`data-stage="${s}" data-mode="all"`,k.refill[s].all,unit)}<span class="muted small">${L('refillLow')}</span>${stepper('cfgRefill',`data-stage="${s}" data-mode="low"`,k.refill[s].low,unit)}</div>`).join('')}
+  </div>
+  ${k.on&&need>tot?`<div class="warn">${L('deckShort',{n:tot,m:need})}</div>`:''}
  </div>`;
 }
 function noteFor(s,q){if(s===0)return L('noteEasy');if(q.each)return L('noteEach',{m:q.max});if(q.multi)return L('noteMulti');return L('noteRight',{v:q.pts})}
@@ -745,17 +789,17 @@ function renderStage(ro){
   else{main=configHTML();ctrl=btn(L('cfgDone'),'cfgDone')}
   scores=false;break;
  case'lobby':{const ready=S.teams.every(t=>t.a&&t.b);
-  main=`<div class="lobby"><div class="joinbox"><div class="qr">${qrSVG(joinURL())}</div><div><div class="muted">${L('scanHint')}</div><div class="code">${code}</div><div class="muted small">${esc(joinURL())}</div></div></div>
+  main=`<div class="lobby"><div class="joinbox"><div class="qr">${qrSVG(joinURL())}</div><div><div class="muted">${L('scanHint')}</div><div class="code">${code}</div><div class="muted small">${esc(joinURL())}</div><div id="roomstat" class="hint" style="margin-top:6px">${roomStat()}</div></div></div>
    <p class="rule">${L('lobbyHint')}</p>
    <div class="setup" style="--n:${NT()}">${S.teams.map((t,i)=>`<div class="team" style="--c:${TC[i]}"><div class="trow"><div class="tname">${esc(tn(i))}</div><div>${t.a&&t.b?'✅':'⏳'}</div></div><div class="roles">🎯 ${L('guesser')}：${t.a?esc(t.a):`<span class="muted">${L('waitingFill')}</span>`}</div><div class="roles">💭 ${L('guessed')}：${t.b?esc(t.b):`<span class="muted">${L('waitingFill')}</span>`}</div></div>`).join('')}</div></div>`;
   ctrl=`<button class="ghost" data-act="backCfg">${L('backCfg')}</button>`+btn(L(ready?'startAll':'startAnyway'),'start');scores=false;break}
  case'intro':main=`<h1 class="title">${L('teamsTonight')}</h1><div class="intro" style="--n:${NT()}">${S.teams.map((t,i)=>`<div class="icard" style="--c:${TC[i]}"><div class="iname">${esc(tn(i))}</div><div>🎯 ${L('guesser')}：${esc(t.a||'—')}</div><div>💭 ${L('guessed')}：${esc(t.b||'—')}</div></div>`).join('')}</div><p class="rule muted">${L('penBoard')}</p>`;
   ctrl=btn(L('toOath'),'oath');scores=false;break;
- case'oath':main=`<h1 class="title">${L('oathTitle')}</h1><div class="oath">${L('oath')}</div>`;ctrl=btn(L('dealBtn'),'deal');scores=false;break;
+ case'oath':main=`<h1 class="title">${L('oathTitle')}</h1><div class="oath">${L('oath')}</div>`;ctrl=btn(L(S.cardsOn?'dealBtn':'oathGo'),'deal');scores=false;break;
  case'deal':main=`<h1 class="title">${L('dealTitle')}</h1><p class="rule muted">${L('dealHint')}</p><div class="legend">${Object.keys(CARDS).map(c=>`<div><b>${CARDS[c].icon} ${cn(c)} ×${CARDS[c].n}</b><div class="muted small">${cd(c)}</div></div>`).join('')}</div>`;ctrl=btn(L('startStage',{s:sn(S.order[0])}),'stageIntro');break;
  case'stageIntro':main=`<div class="badge" style="background:${STAGE_COL[st][0]};color:#1a0f22">${L('stageN',{n:S.si+1})}</div><h1 class="title huge" style="color:${STAGE_COL[st][0]}">${sn(st)}</h1><p class="rule">${sr(st)}</p>${st>0?howtoHTML():''}<p class="muted">${L('total',{n:cnt})}</p>`;ctrl=btn(L('drawFirst'),'draw');break;
  case'pre':{const all=S.win&&S.win.done.every(Boolean),anyUsed=S.win&&S.win.used.some(Boolean);
-  main=qBlock()+`<div class="hint">${all?L(anyUsed?'allDecided':'allNoCard'):L('cardTime')}</div>`;ctrl=btn(L(all?'startTimer':'startTimerSkip',{n:STAGE_INFO[st].time}),'startAnswer');break}
+  main=qBlock()+(S.cardsOn?`<div class="hint">${all?L(anyUsed?'allDecided':'allNoCard'):L('cardTime')}</div>`:'');ctrl=btn(L(all?'startTimer':'startTimerSkip',{n:STAGE_INFO[st].time}),'startAnswer');break}
  case'answering':main=qBlock(true)+'<div class="timer"></div>'+(st===0?`<div class="hint">${L('phaseAnsEasy')}</div>`:`<div class="rolemini">${L('roleMiniG')}</div>`);ctrl=`<button class="ghost big" data-act="endAnswer">${L('endEarly')}</button>`;break;
  case'reveal':main=qBlock(true)+`<h2 class="call">${L(st===0?'pointNow':'revealT')}</h2>${scoringHTML(ro)}`;ctrl=btn(L('confirm'),'confirmScore');scores=false;break;
  case'post':main=qBlock(true)+`<h2 class="call">${L('plusTime')}</h2><p class="hint">${L('plusHint')}</p>`;ctrl=`<button class="ghost big" data-act="apply">${L('applyNow')}</button>`;break;
@@ -818,7 +862,7 @@ function renderClient(){
   <section class="panel center-t">${mid}</section>
   <button class="pausebig" data-act="pause">${L('pause')}</button>
   <section class="panel"><div class="roles">🎯 ${L('guesser')} <b>${esc(t.a||'—')}</b>　💭 ${L('guessed')} <b>${esc(t.b||'—')}</b></div></section>
-  <section class="panel"><h3>${L('myCards',{n:t.hand.length})}</h3>${t.hand.length?t.hand.map(c=>`<div class="crow"><span class="cicon">${CARDS[c].icon}</span><div style="flex:1"><b>${cn(c)}</b><div class="muted small">${cd(c)}</div></div></div>`).join(''):`<p class="muted">${L('noCards')}</p>`}<p class="muted small">${L('autoAsk')}</p></section>
+  ${S.cardsOn?`<section class="panel"><h3>${L('myCards',{n:t.hand.length})}</h3>${t.hand.length?t.hand.map(c=>`<div class="crow"><span class="cicon">${CARDS[c].icon}</span><div style="flex:1"><b>${cn(c)}</b><div class="muted small">${cd(c)}</div></div></div>`).join(''):`<p class="muted">${L('noCards')}</p>`}<p class="muted small">${L('autoAsk')}</p></section>`:''}
   <section class="panel"><h3>${L('scoreTitle')}</h3>${S.teams.map((x,i)=>`<div class="mini" style="--c:${TC[i]}"><span>${esc(tn(i))}</span><b>${x.score}</b></div>`).join('')}</section>
  </div>${cardModal()}${pauseOverlay()}`;
 }
@@ -826,7 +870,7 @@ function renderClient(){
 /* ============ 操作 ============ */
 function startHost(resume){
  role='host';
- if(resume){try{const d=JSON.parse(localStorage.getItem('cplq-host2'));if(!d.S.cfg||!d.S.pool)throw 0;code=d.code;S=d.S;undoStack=d.undo||[]}catch(e){resume=false}}
+ if(resume){try{const d=JSON.parse(localStorage.getItem('cplq-host2'));if(!d.S.cfg||!d.S.pool||!d.S.cfg.cards)throw 0;code=d.code;S=d.S;undoStack=d.undo||[]}catch(e){resume=false}}
  if(!resume){code=String(Math.floor(100000+Math.random()*900000));S=newState();undoStack=[]}
  if(S.phase==='answering')S.paused=true;
  lastEventId=S.event?S.event.id:null;lastAnimId=S.anim?S.anim.id:null;
@@ -846,7 +890,13 @@ function handleLocal(a){
  case'proxyClose':ui.proxy=null;ui.pick=null;render();return true;
  case'reset':if(!confirm(L('resetConfirm')))return true;return false;
  case'cfgAdd':{const el=$('#cust-'+a.stage),ty=$('#ctype-'+a.stage);a.text=el?el.value:'';a.ctype=ty?ty.value:'pts';if(!a.text.trim()){toast(L('cfgEmpty'));return true}return false}
- case'cfgDone':{const ok=[0,1,2].some(s=>S.cfg.st[s].on&&cfgAvail(s)>0);if(!ok){toast(L('cfgNeedOne'));return true}return false}
+ case'cfgCards':if(S.phase!=='config')return false;S.cfg.cards.on=!S.cfg.cards.on;break;
+ case'cfgCardN':if(S.phase!=='config'||!CARDS[a.card])return false;S.cfg.cards.n[a.card]=Math.max(0,Math.min(5,(S.cfg.cards.n[a.card]|0)+a.v));break;
+ case'cfgCardSet':if(S.phase!=='config'||!CARDS[a.card])return false;S.cfg.cards.n[a.card]=Math.max(0,Math.min(5,a.v|0));break;
+ case'cfgCountSet':{if(S.phase!=='config')return false;S.cfg.st[a.stage].count=Math.max(1,Math.min(cfgAvail(a.stage)||1,a.v|0));break}
+ case'cfgDeal':if(S.phase!=='config')return false;S.cfg.cards.deal=Math.max(0,Math.min(4,S.cfg.cards.deal+a.v));break;
+ case'cfgRefill':{if(S.phase!=='config'||!['all','low'].includes(a.mode)||!(a.stage===0||a.stage===1))return false;const r=S.cfg.cards.refill[a.stage];r[a.mode]=Math.max(0,Math.min(3,r[a.mode]+a.v));break}
+ case'cfgDone':{const ok=[0,1,2].some(s=>S.cfg.st[s].on&&cfgAvail(s)>0);if(!ok){toast(L('cfgNeedOne'));return true}if([0,1,2].some(swapIssue)){toast(L('cfgFixFirst'));return true}return false}
  case'useCard':if(CARDS[a.card]&&CARDS[a.card].target&&a.target===undefined){ui.pick={team:a.team,card:a.card};render();return true}ui.pick=null;return false;
  }
  return false;
